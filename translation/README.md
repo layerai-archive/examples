@@ -1,6 +1,6 @@
 # Fine Tuning T5 for English to SQL Translation
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/t5-fine-tuning-with-layer) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1QNEGlRKTnKn9VhS6vBTU03UFLx0ZgUao?usp=sharing) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/translation)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/t5-fine-tuning-with-layer) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/translation/T5_Fine_tuning_with_Layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/translation)
 
 ## How to use
 
@@ -49,4 +49,4 @@ The t5 library serves primarily as code for reproducing the experiments in Explo
 We are going to be using pretrained t5 model from :hugs: and fine tune it with adding a new task: `translate English to SQL`. Here is the versions of the model we have finetuned:
 
 https://development.layer.co/layer/t5-fine-tuning-with-layer/models/t5-english-to-sql
-
+https://development.layer.co/layer/t5-fine-tuning-with-layer/models/t5-tokenizer
