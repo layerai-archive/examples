@@ -1,5 +1,7 @@
 ### Question answering with SQUAD dataset and Transformers
-
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/qas/models/qa)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1h8M_sLKAbvsAA11qgSPsOc98g08RB4_u/view?usp=sharing)
+[![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples)
 #### How to use
 Make sure you have the latest version of Layer-SDK
 
@@ -8,10 +10,7 @@ Make sure you have the latest version of Layer-SDK
 Then, you can fetch the finetuned model and the tokenizer from Layer and start generating text
 
 ```
-from transformers import AutoTokenizer
 import tensorflow as tf
-model_checkpoint = "distilbert-base-uncased"
-tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 context = """
 On a mild day in late July, a teenager was walking home from the downtown
 area, such as it was, of Little Whinging. The city did not have a train station, a
@@ -28,7 +27,9 @@ was his scar–until he realized that looking around to see if you were being fo
 was not exactly usual behavior. 
 """
 question = "When was the teenegar walking home?"
-
+model = layer.get_model("qa").get_train()
+tokenizer = layer.get_model("dsbt-tokenizer").get_train()
+question = "When was the teenegar walking home?"
 inputs = tokenizer([context], [question], return_tensors="np")
 outputs = model(inputs)
 start_position = tf.argmax(outputs.start_logits, axis=1)
