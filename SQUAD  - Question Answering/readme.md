@@ -8,7 +8,10 @@ Make sure you have the latest version of Layer-SDK
 Then, you can fetch the finetuned model and the tokenizer from Layer and start generating text
 
 ```
-model = layer.get_model('qa').get_train()
+from transformers import AutoTokenizer
+import tensorflow as tf
+model_checkpoint = "distilbert-base-uncased"
+tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 context = """Keras is an API designed for human beings, not machines. Keras follows best
 practices for reducing cognitive load: it  offers consistent & simple APIs, it minimizes
 the number of user actions required for common use cases, and it provides clear &
