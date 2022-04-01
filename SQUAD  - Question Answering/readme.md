@@ -12,11 +12,22 @@ from transformers import AutoTokenizer
 import tensorflow as tf
 model_checkpoint = "distilbert-base-uncased"
 tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
-context = """Keras is an API designed for human beings, not machines. Keras follows best
-practices for reducing cognitive load: it  offers consistent & simple APIs, it minimizes
-the number of user actions required for common use cases, and it provides clear &
-actionable error messages. It also has extensive documentation and developer guides. """
-question = "What is Keras?"
+context = """
+On a mild day in late July, a teenager was walking home from the downtown
+area, such as it was, of Little Whinging. The city did not have a train station, a
+department store, or even a large supermarket; just a few dozen shops, a bank, a
+police station, and a library. It was the library from which soon-to-be-sixteen-yearold Harry Potter was returning, with an old bookbag around his shoulder. He
+looked around from time to time as he walked. It looked as though he were
+admiring the trees and bushes, which had recovered nicely from last year’s drought,
+but he actually was wondering whether there was anyone following him. Or, more
+precisely, whether he could catch a glimpse of the person he knew must be
+following him. All he could see, however, were the normal sights of a suburban
+neighborhood, and a few people looking at him rather oddly as they passed him.
+Harry briefly wondered why–after all, he was not exactly famous in this area, nor
+was his scar–until he realized that looking around to see if you were being followed
+was not exactly usual behavior. 
+"""
+question = "When was the teenegar walking home?"
 
 inputs = tokenizer([context], [question], return_tensors="np")
 outputs = model(inputs)
