@@ -7,7 +7,7 @@ Make sure you have the latest version of Layer-SDK
 
 ``` !pip install layer-sdk -q ``` 
 
-Then, you can fetch the finetuned model and the tokenizer from Layer and start generating text
+Then, you can fetch the finetuned model and the tokenizer from Layer and start classifying text
 
 ```
 bert = layer.get_model('bert').get_train()
