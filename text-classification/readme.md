@@ -1,5 +1,7 @@
 ### Fine tuning Hugging Face for text classification
-
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/derrick-bert)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1o8ataaQhTtAeliq_KG2wBauV3Hr1pkj1/view?usp=sharing)
+[![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/text-classification)
 #### How to use
 Make sure you have the latest version of Layer-SDK
 
@@ -18,7 +20,15 @@ logits = output.logits
 import tensorflow as tf
 predicted_class_id = int(tf.math.argmax(logits, axis=-1)[0])
 bert.config.id2label[predicted_class_id]
+# > LABEL_1
 ```
+### Dataset 
+In this example, we use the famous `imdb` dataset to fine tuning a text classification model. 
+The dataset has two labels; `0` and `1`. 
+### Model 
+We fine tune a pre-trained BERT uncased model. It doesn't distinguish between English and 
+english. BERT has been pre-trained on a large corpus of English data and can also be used for 
+Masked Language Modeling and Next sentence Prediction. 
 
 https://development.layer.co/layer/derrick-bert/models/bert-tokenizer  
 https://development.layer.co/layer/derrick-bert/models/bert  
