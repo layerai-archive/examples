@@ -6,7 +6,23 @@ In this quick walkthrough, we will train a machine learning model to predict the
 
 ## How to use
 
-[WIP]
+Make sure you have the latest version of Layer-SDK
+```
+!pip install layer-sdk -q
+```
+
+```python
+import layer
+
+model = layer.get_model("survival_model").get_train()
+df = layer.get_dataset("passengers").to_pandas()
+passenger = df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']]
+survival_propability = model.predict_proba(passenger.sample())[0][1]
+
+print(f"Survival Probaility: {survival_propability:.2%}")
+
+# > 0.68
+```
 
 ## Dataset
 
