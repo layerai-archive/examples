@@ -19,16 +19,19 @@ df = layer.get_dataset("passengers").to_pandas()
 passenger = df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']]
 survival_propability = model.predict_proba(passenger.sample())[0][1]
 
-print(f"Survival Probaility: {survival_propability:.2%}")
+print(f"Survival Probability: {survival_propability:.2%}")
 
-# > 0.68
+# > Survival Probability: 68.37%
 ```
 
 ## Dataset
 
-We will use the famous [Kaggle Titanic Dataset](https://www.kaggle.com/competitions/titanic/data) to train our model. 
+We will use the famous [Kaggle Titanic Dataset](https://www.kaggle.com/competitions/titanic/data) to train our model. This dataset originally contains two separate files `train.csv` and `test.csv`. We are going to create a new dataset by merging and transforming them. Here is the final dataset:
 
+https://development.layer.co/layer/titanic/datasets/passengers
 
 ## Model
 
-We will be train a RandomForestClassifier for sklearn.
+We will be training a RandomForestClassifier from sklearn. We will fit the dataset we have created. You can find all the model experiments here:
+
+https://development.layer.co/layer/titanic/models/survival_model
