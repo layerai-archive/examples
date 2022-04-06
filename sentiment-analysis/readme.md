@@ -1,8 +1,6 @@
 # Train sentiment analysis model with Layer
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/sentiment-analysis) 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/sentiment-analysis/sentiment_analysis.ipynb) 
-[![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/sentiment-analysis)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/sentiment-analysis) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/sentiment-analysis/sentiment_analysis.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/sentiment-analysis)
 
 ## How to use
 
