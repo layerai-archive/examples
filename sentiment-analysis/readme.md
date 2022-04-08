@@ -15,31 +15,26 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from numpy import array
 import numpy as np
-from sklearn.model_selection import train_test_split 
 import layer
-df = layer.get_dataset('layer/sentiment-analysis/datasets/clean_imdb-dataset-of-50k-movie-reviews').to_pandas()
-docs = df['review']
-labels = array(df['sentiment'])
-X_train, X_test , y_train, y_test = train_test_split(docs, labels , test_size = 0.20, random_state=0)
-oov_token = "<OOV>"
-tokenizer = Tokenizer(oov_token=oov_token)
-tokenizer.fit_on_texts(X_train)
-word_index = tokenizer.word_index
-X_test_sequences = tokenizer.texts_to_sequences(X_test)
-padding_type = "post"
-trunction_type="post"
-max_length = 512
-X_test_padded = pad_sequences(X_test_sequences,maxlen=max_length, padding=padding_type,
-                          truncating=trunction_type)
-test_data = np.expand_dims(X_test_padded[0], axis=0)
+from sklearn.model_selection import train_test_split
+review = "That was such a horrible movie, I hated it."
+tokenizer = layer.get_model('layer/sentiment-analysis/models/imdb_data_tokenizer').get_train()
 model = layer.get_model('layer/sentiment-analysis/models/tensorflow-sentiment-analysis')
 classifier = model.get_train()
+word_index = tokenizer.word_index
+X_test_sequences = tokenizer.texts_to_sequences(review)
+padding_type = "post"
+truncation_type="post"
+max_length = 512
+X_test_padded = pad_sequences(X_test_sequences,maxlen=max_length, padding=padding_type,
+                          truncating=truncation_type)
+test_data = np.expand_dims(X_test_padded[0], axis=0)
 prediction = classifier.predict(test_data)
 if prediction[0][0]>0.5:
   print("Is positive")
 else:
    print("Is a negative")
-# > Is positive
+# > Is negative
 ```
 ## Dataset
 In this project, we use the famous IMDB dataset to train a deep learning sentiment analysis model. 
@@ -59,7 +54,7 @@ networks that allows information to flow in both directions. An RNN has short-te
 input when producing output. The short-term memory allows the network to retain past information and, hence, uncover
 relationships between data points that are far from each other. RNNs are great for handling time series and sequence data such as audio and text.
 
-Here is the model defination: 
+Here is the model definition: 
 ```python
 model = Sequential([
 Embedding(vocab_size, 64, input_length=max_length),
@@ -80,6 +75,7 @@ of the input sequences. This layer also loads pre-trained word embedding weights
   The output from both directions is concatenated but there is the option to sum, average, or multiply. 
   Bidirectional LSTMs help the network to learn the relationship between past and future words.  When two LSTMs are defined as shown below, the first one has to return sequences that will be passed to the next LSTM.
 
-Follow the link below to see the model. 
+Follow the link below to see the models. 
   
 https://development.layer.co/layer/sentiment-analysis/models/tensorflow-sentiment-analysis
+https://development.layer.co/layer/sentiment-analysis/models/imdb_data_tokenizer
