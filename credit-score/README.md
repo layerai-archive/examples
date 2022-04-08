@@ -10,30 +10,21 @@ Make sure you have the latest version of Layer-SDK
 You can fetch the trained model and start making predictions from it right away. 
 
 ```python
-from sklearn.model_selection import train_test_split
-import layer
 import numpy as np
-from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
-application_features =  layer.get_dataset('layer/credit-score/datasets/application_features').to_pandas()
-previous_application_features = layer.get_dataset('layer/credit-score/datasets/previous_application').to_pandas()
-installments_payments = layer.get_dataset('layer/credit-score/datasets/installments_payments').to_pandas()
-dff = installments_payments.merge(previous_application_features, on=['SK_ID_PREV', 'SK_ID_CURR']).merge(application_features,on=['SK_ID_CURR'])
-X = dff.drop(["TARGET", "SK_ID_CURR",'index'], axis=1)
-y = dff["TARGET"]
+from sklearn.preprocessing import OneHotEncoder
 credit_model = layer.get_model('layer/credit-score/models/credit_score_model').get_train()
-categories = X.select_dtypes(include=['object']).columns.tolist() 
+data = np.array([[1731690, -1916.0,-1953.0,6953.31,6953.31,1731690,0, 0 ,1731690 ,0.2976,7.47512,0.039812,1731690,0.189752,-161451.0,1731690,1731690,1731690,1731690,1,-16074.0, 1731690, 0.0 ]])
+categories = []
 transformer = ColumnTransformer(
         transformers=[('cat', OneHotEncoder(handle_unknown='ignore', drop="first"), categories)],
         remainder='passthrough')
-
-X = transformer.fit_transform(X,)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3,
-                                                        random_state=0)
-credit_model.predict(X_test[0:1])
-credit_model.predict_proba(X_test[0:1])
+data = transformer.fit_transform(data)
+credit_model.predict(data)
+credit_model.predict_proba(data)
 # > array([0])
-# > array([[0.86409123, 0.13590877]])
+# > array([[0.93264026, 0.06735974]])
+
 ```
 ## Dataset
 In this project we build a credit scoring model using the 
