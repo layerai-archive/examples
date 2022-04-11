@@ -29,7 +29,7 @@ else:
    print(" is a cat")
 # >  is a cat
 ```
-![CAT IMAGE](https://upload.wikimedia.org/wikipedia/commons/c/c7/Tabby_cat_with_blue_eyes-3336579.jpg)
+![CAT IMAGE](cat.png)
 ## Dataset
 In this project we use the [cat and dogs dataset](https://www.kaggle.com/c/dogs-vs-cats) from Kaggle to train an image classifaction deep learning model. 
 ## Model 
