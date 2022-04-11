@@ -9,7 +9,7 @@ Make sure you have the latest version of Layer-SDK
 
 Then, you can fetch the fine tuned model and the tokenizer from Layer and start classifying text.
 
-```
+```python
 import layer
 bert = layer.get_model('bert').get_train()
 tokenizer = layer.get_model('bert-tokenizer').get_train()
