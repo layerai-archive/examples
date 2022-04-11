@@ -9,7 +9,7 @@ Make sure you have the latest version of Layer-SDK
 
 Then, you can fetch the fine tuned model and the tokenizer from Layer and start generating text
 
-```
+```python
 import layer
 gpt2 = layer.get_model('gpt2-clm').get_train()
 tokenizer = layer.get_model('tokenizer').get_train()
