@@ -7,10 +7,11 @@ Make sure you have the latest version of Layer-SDK
 
 ``` !pip install layer-sdk -q ``` 
 
-Then, you can fetch the finetuned model and the tokenizer from Layer and start generating text
+Then, you can fetch the fine tuned model and the tokenizer from Layer and start generating text
 
-```
+```python
 import tensorflow as tf
+import layer
 context = """
 On a mild day in late July, a teenager was walking home from the downtown
 area, such as it was, of Little Whinging. The city did not have a train station, a
@@ -26,10 +27,11 @@ Harry briefly wondered why–after all, he was not exactly famous in this area, 
 was his scar–until he realized that looking around to see if you were being followed
 was not exactly usual behavior. 
 """
-question = "When was the teenegar walking home?"
-model = layer.get_model("qa").get_train()
-tokenizer = layer.get_model("dsbt-tokenizer").get_train()
-question = "When was the teenegar walking home?"
+tokenizer = layer.get_model("layer/qas/models/dsbt-tokenizer").get_train()
+
+question = "When was the teenager walking home?"
+model = layer.get_model("layer/qas/models/qa").get_train()
+question = "When was the teenager walking home?"
 inputs = tokenizer([context], [question], return_tensors="np")
 outputs = model(inputs)
 start_position = tf.argmax(outputs.start_logits, axis=1)
@@ -38,6 +40,19 @@ print(int(start_position), int(end_position[0]))
 answer = inputs["input_ids"][0, int(start_position) : int(end_position) + 1]
 print(answer)
 print(tokenizer.decode(answer))
+# > 0 7
+# [  101  2006  1037 10256  2154  1999  2397  2251]
+# [CLS] on a mild day in late july
 ```
+### Dataset 
+In this project we use the [Stanford Question Answering Dataset (SQuAD) dataset](https://huggingface.co/datasets/squad). 
+The dataset is made up of some questions and answers. 
+### Model 
+We use the SQuAD dataset to fine tune a [DistilBert](https://huggingface.co/docs/transformers/model_doc/distilbert
+) for the question and answering task. 
+
+The models saved as a result of this work can be seen below: 
 
 https://development.layer.co/layer/qas/models/qa
+
+https://development.layer.co/layer/qas/models/dsbt-tokenizer
