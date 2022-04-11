@@ -2,6 +2,10 @@
 [![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/qas/models/qa)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1h8M_sLKAbvsAA11qgSPsOc98g08RB4_u/view?usp=sharing)
 [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples)
+
+In this project we fine tune a Hugging Face BERT model on the SQUAD dataset for question answering.
+
+
 #### How to use
 Make sure you have the latest version of Layer-SDK
 
