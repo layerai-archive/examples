@@ -1,6 +1,6 @@
 # Credit score model with Layer
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/credit-score) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/credit-score/credit-score.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/credit-score)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/credit-score) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/credit-score/credit-score.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/credit-score)
 
 In this project we use Layer to build a credit scoring model. The project uses the [Home Credit Default Risk dataset](https://www.kaggle.com/c/home-credit-default-risk/overview) that is hosted on Kaggle.
 ## How to use

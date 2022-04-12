@@ -1,5 +1,5 @@
 ### Fine tuning Hugging Face for causal language modeling 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/causal-language-modeling)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/causal-language-modeling)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/causal-language-modeling/causal-language-modeling.ipynb)
 [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/causal-language-modeling)
 
