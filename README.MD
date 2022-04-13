@@ -12,7 +12,7 @@ pip install layer-sdk
 ## Clone the examples repository
 The first step is to clone this repository:
 ```yaml
-layer clone https://github.com/layerai/examples
+git clone https://github.com/layerai/examples
 ```
 ## Select an example project
 Next, select one example project and change into that folder. Let's use the Titanic example for illustration: 
