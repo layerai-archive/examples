@@ -33,6 +33,6 @@ GPT-2  is a model that has been pre-trained on a large corpus of English data.
 The data consists of web pages scrapped from the internet. 
 The model can be fine-tuned for text classification. 
 
-https://development.layer.co/layer/causal-language-modeling/models/tokenizer  
+https://app.layer.ai/layer/causal-language-modeling/models/tokenizer  
 
-https://development.layer.co/layer/causal-language-modeling/models/gpt2-clm  
+https://app.layer.ai/layer/causal-language-modeling/models/gpt2-clm  

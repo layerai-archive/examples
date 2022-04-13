@@ -33,9 +33,9 @@ In this project we build a credit scoring model using the
 [Home Credit Default Risk dataset](https://www.kaggle.com/c/home-credit-default-risk/overview) 
 that is hosted on Kaggle.
 
-https://development.layer.co/layer/credit-score/datasets/application_features
+https://app.layer.ai/layer/credit-score/datasets/application_features
 
-https://development.layer.co/layer/credit-score/datasets/installments_payments
+https://app.layer.ai/layer/credit-score/datasets/installments_payments
 ## Model 
 We use the [HistGradientBoostingClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.HistGradientBoostingClassifier.html)
 that is ideal for big dataset. According to its documentation: 
@@ -46,4 +46,4 @@ This implementation is inspired by [LightGBM](https://github.com/Microsoft/Light
 
 Check out the model on Layer on the link below:
 
-https://development.layer.co/layer/credit-score/models/credit_score_model
+https://app.layer.ai/layer/credit-score/models/credit_score_model

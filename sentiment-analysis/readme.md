@@ -40,7 +40,8 @@ else:
 ## Dataset
 In this project, we use the famous IMDB dataset to train a deep learning sentiment analysis model. 
 The dataset can be seen using the link below: 
-https://development.layer.co/layer/sentiment-analysis/datasets/imdb-dataset-of-50k-movie-reviews
+
+https://app.layer.ai/layer/sentiment-analysis/datasets/imdb-dataset-of-50k-movie-reviews
 
 You can start using this dataset immediately using the following command: 
 ```python
@@ -78,5 +79,5 @@ of the input sequences. This layer also loads pre-trained word embedding weights
 
 Follow the link below to see the models. 
   
-https://development.layer.co/layer/sentiment-analysis/models/tensorflow-sentiment-analysis
-https://development.layer.co/layer/sentiment-analysis/models/imdb_data_tokenizer
+https://app.layer.ai/layer/sentiment-analysis/models/tensorflow-sentiment-analysis
+https://app.layer.ai/layer/sentiment-analysis/models/imdb_data_tokenizer

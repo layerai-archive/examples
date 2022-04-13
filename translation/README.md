@@ -38,7 +38,7 @@ SELECT [prop1] , [breakdown] FROM [nns] GROUP BY [breakdown]
 
 Here we can easily pass domain specific keys for the properties (prop1) or nouns (nns). You can preview the dataset we have created here:
 
-https://development.layer.co/layer/t5-fine-tuning-with-layer/datasets/english_sql_translations
+https://app.layer.ai/layer/t5-fine-tuning-with-layer/datasets/english_sql_translations
 
 ## Model
 
@@ -48,5 +48,5 @@ The t5 library serves primarily as code for reproducing the experiments in Explo
 
 We are going to be using pretrained t5 model from :hugs: and fine tune it with adding a new task: `translate English to SQL`. Here is the versions of the model we have finetuned:
 
-https://development.layer.co/layer/t5-fine-tuning-with-layer/models/t5-english-to-sql
-https://development.layer.co/layer/t5-fine-tuning-with-layer/models/t5-tokenizer
+https://app.layer.ai/layer/t5-fine-tuning-with-layer/models/t5-english-to-sql
+https://app.layer.ai/layer/t5-fine-tuning-with-layer/models/t5-tokenizer
