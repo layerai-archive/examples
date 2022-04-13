@@ -17,9 +17,8 @@ import layer
 model = layer.get_model("survival_model").get_train()
 df = layer.get_dataset("passengers").to_pandas()
 passenger = df[['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare']]
-survival_propability = model.predict_proba(passenger.sample())[0][1]
-
-print(f"Survival Probability: {survival_propability:.2%}")
+survival_probability = model.get_train().predict_proba(passenger.sample())[0][1]
+print(f"Survival Probability: {survival_probability:.2%}")
 
 # > Survival Probability: 68.37%
 ```
