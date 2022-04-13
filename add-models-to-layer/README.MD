@@ -1,5 +1,5 @@
 # How to add models to Layer
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/iris/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/add-models-to-layer/how_to_add_models_to_layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/add-datasets-to-layer)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/iris/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/add-models-to-layer/how_to_add_models_to_layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/add-models-to-layer)
 
 In this project, we'll look at how to save a model to Layer. Layer supports popular machine learning libraries and frameworks. 
 ## How to use
