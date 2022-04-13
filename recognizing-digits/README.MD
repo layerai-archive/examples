@@ -30,7 +30,7 @@ for ax, image, prediction in zip(axes.flat, X_test, predicted):
     ax.imshow(image, cmap=plt.cm.gray_r, interpolation="nearest")
     ax.set_title(f"Prediction: {prediction}")
 ```
-![Digits Image](digits.png)
+![Digits Image](digits.jpg)
 ## Model
 We train a [Support Vector Machine](https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html) model to train a model that predicts 
 digits from images.
