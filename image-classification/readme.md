@@ -32,7 +32,8 @@ else:
 ```
 ![CAT IMAGE](cat.png)
 ## Dataset
-In this project we use the [cat and dogs dataset](https://www.kaggle.com/c/dogs-vs-cats) from Kaggle to train an image classifaction deep learning model. 
+In this project we use the [cat and dogs dataset](https://www.kaggle.com/c/dogs-vs-cats) from Kaggle to train an image 
+classification deep learning model. 
 ## Model 
 We train a Convolutional Neural Network from scratch to predct whether a given image is a cat or a dog. 
 A Convolutional Neural Network is a special class of neural networks that are built with the ability to extract unique features from image data. 
@@ -66,4 +67,4 @@ The Conv2D layer expects:
 
 Check out the model on Layer on the link below:
 
-https://development.layer.co/layer/derrick-cnn/models/cnn
+https://app.layer.ai/layer/derrick-cnn/models/cnn

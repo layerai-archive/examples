@@ -28,10 +28,10 @@ print(f"Survival Probability: {survival_propability:.2%}")
 
 We will use the famous [Kaggle Titanic Dataset](https://www.kaggle.com/competitions/titanic/data) to train our model. This dataset originally contains two separate files `train.csv` and `test.csv`. We are going to create a new dataset by merging and transforming them. Here is the final dataset:
 
-https://development.layer.co/layer/titanic/datasets/passengers
+https://app.layer.ai/layer/titanic/datasets/passengers
 
 ## Model
 
 We will be training a RandomForestClassifier from sklearn. We will fit the dataset we have created. You can find all the model experiments here:
 
-https://development.layer.co/layer/titanic/models/survival_model
+https://app.layer.ai/layer/titanic/models/survival_model
