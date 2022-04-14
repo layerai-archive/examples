@@ -2,7 +2,7 @@
 
 This repository contains example projects that you can use to get started with [Layer](https://layer.ai).
 
-Layer is a declarative MLOps platform to help data teams across all companies produce machine learning (ML) applications based on code. It orchestrates your data pipeline for you. Layer enables you to focus on designing, developing, and deploying models without worrying about the infrastructure
+Layer is a collaborative MLOps platform where you can build, train, version and share your machine learning (ML) models.
 
 ## Install Layer
 The first step is to install the [Layer SDK](https://docs.app.layer.ai/docs/installation):
