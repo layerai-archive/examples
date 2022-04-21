@@ -13,8 +13,8 @@ Then, you can fetch the fine tuned model and the tokenizer from Layer and start 
 
 ```python
 import layer
-gpt2 = layer.get_model('gpt2-clm').get_train()
-tokenizer = layer.get_model('tokenizer').get_train()
+gpt2 = layer.get_model('layer/causal-language-modeling/models/gpt2-clm').get_train()
+tokenizer = layer.get_model('layer/causal-language-modeling/tokenizer').get_train()
 input_sequence = "I love reading books"
 # encode context the generation is conditioned on
 input_ids = tokenizer.encode(input_sequence, return_tensors='tf')
