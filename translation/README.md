@@ -25,6 +25,8 @@ tokenizer.decode(outputs[0],skip_special_tokens=True)
 # > SELECT avg(price) , provinces FROM wines WHERE location = 'Italy' GROUP BY provinces
 ```
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Q6wiwdyjPGbfABpsNwOBzhhWE5pQTdrC?usp=sharing) [![Open Hugging Face Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-blueviolet)](https://huggingface.co/spaces/mecevit/english-to-sql) 
+
 ## Dataset
 
 Unlike other language to language translation datasets, we can create our own English-SQL pairs easily with templates.
