@@ -40,7 +40,7 @@ test = layer.get_dataset('layer/california_housing/datasets/train').to_pandas()
 model = layer.get_model('layer/california_housing/models/housing').get_train()
 x = test.drop('median_house_value', axis=1)
 model.predict(x.head(1))
-# > array([7128.08452517])
+# > array([352812.31112454])
 ```
 
 https://app.layer.ai/layer/california_housing/models/housing
