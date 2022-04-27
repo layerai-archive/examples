@@ -44,9 +44,11 @@ f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } pe
 # > 'sashimi with a 1.3 percent confidence.'
 ```
 ## Dataset
-The food dataset is obtained from http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz
-
+The food dataset is obtained from http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz.
 ## Model
 We train a convolution neural network model using TensorFlow to predict the type of food.
 
 https://app.layer.ai/layer/image-classification/models/food-vision https://app.layer.ai/layer/image-classification/models/food-vision#Sample-image https://app.layer.ai/layer/image-classification/models/food-vision?tab=logs&view=9efe73fc-bd13-4945-affd-bc1c96e6efd0#Metrics https://app.layer.ai/layer/image-classification/models/food-vision#Loss-plot https://app.layer.ai/layer/image-classification/models/food-vision#Accuracy-on-test-dataset https://app.layer.ai/layer/image-classification/models/food-vision#Accuracy-plot
+
+## Acknowledgements
+The Food-101 dataset is obtained from the user [dansbecker on Kaggle](https://www.kaggle.com/datasets/dansbecker/food-101). 
