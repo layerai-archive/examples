@@ -2,7 +2,6 @@ import streamlit as st
 from PIL import Image
 import matplotlib.pyplot as plt
 import layer
-from tensorflow.keras.preprocessing.image import img_to_array
 import numpy as np
 import tensorflow as tf
 
@@ -23,10 +22,10 @@ def main():
         st.pyplot(fig)
 
 
-def predict(image):
+def predict(food_image):
     model = layer.get_model('layer/image-classification/models/food-vision').get_train()
-    test_image = image.resize((300, 300))
-    test_image = img_to_array(test_image)
+    test_image = food_image.resize((200, 200))
+    test_image = tf.keras.preprocessing.image.array_to_img(test_image)
     test_image = test_image / 255.0
     test_image = np.expand_dims(test_image, axis=0)
     class_names = ['chicken_curry', 'oysters', 'tuna_tartare', 'pho', 'fried_rice', 'hot_and_sour_soup',
@@ -48,24 +47,6 @@ def predict(image):
     predictions = model.predict(test_image)
     scores = tf.nn.softmax(predictions[0])
     scores = scores.numpy()
-    results = {
-        'Tomato Healthy': 0,
-        'Tomato Septoria Leaf Spot': 0,
-        'Tomato Bacterial Spot': 0,
-        'Tomato Blight': 0,
-        'Cabbage Healthy': 0,
-        'Tomato Spider Mite': 0,
-        'Tomato Leaf Mold': 0,
-        'Tomato_Yellow Leaf Curl Virus': 0,
-        'Soy_Frogeye_Leaf_Spot': 0,
-        'Soy_Downy_Mildew': 0,
-        'Maize_Ravi_Corn_Rust': 0,
-        'Maize_Healthy': 0,
-        'Maize_Grey_Leaf_Spot': 0,
-        'Maize_Lethal_Necrosis': 0,
-        'Soy_Healthy': 0,
-        'Cabbage Black Rot': 0
-    }
     result = f"{class_names[np.argmax(scores)]} with a {(100 * np.max(scores)).round(2)} percent confidence."
     return result
 
