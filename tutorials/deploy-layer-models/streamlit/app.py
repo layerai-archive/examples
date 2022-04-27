@@ -1,11 +1,9 @@
 import streamlit as st
 from PIL import Image
-import matplotlib.pyplot as plt
 import layer
 import numpy as np
+from keras.preprocessing import image
 import tensorflow as tf
-
-fig = plt.figure()
 
 st.header("Predict the type of food")
 
@@ -14,18 +12,16 @@ def main():
     file_uploaded = st.file_uploader("Choose File", type=["png", "jpg", "jpeg"])
 
     if file_uploaded is not None:
-        image = Image.open(file_uploaded)
-        plt.imshow(image)
-        plt.axis("off")
-        predictions = predict(image)
+        food_image = Image.open(file_uploaded)
+        predictions = predict(food_image)
         st.write(predictions)
-        st.pyplot(fig)
+        st.image(food_image, caption='Food image')
 
 
 def predict(food_image):
     model = layer.get_model('layer/image-classification/models/food-vision').get_train()
     test_image = food_image.resize((200, 200))
-    test_image = tf.keras.preprocessing.image.array_to_img(test_image)
+    test_image = image.img_to_array(test_image)
     test_image = test_image / 255.0
     test_image = np.expand_dims(test_image, axis=0)
     class_names = ['chicken_curry', 'oysters', 'tuna_tartare', 'pho', 'fried_rice', 'hot_and_sour_soup',
