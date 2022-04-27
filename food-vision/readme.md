@@ -1,4 +1,4 @@
-Food vision with Layer
+# Food vision with Layer
 
 [![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/image-classification) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/food-vision/food-vision.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/food-vision)
 
@@ -12,9 +12,12 @@ Make sure you have the latest version of Layer-SDK
 pip install layer-sdk 
 ```
 Then, you can fetch the model and predict on new food images.
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1KTZ3h_4OefZrQggURfr_eJClZlXp4V6g?usp=sharing)
 ```python
 import layer 
 import wget # pip install wget
+import tarfile
 wget.download("http://data.vision.ee.ethz.ch/cvl/food-101.tar.gz")
 food_tar = tarfile.open('food-101.tar.gz')
 food_tar.extractall('.') 
