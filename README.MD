@@ -44,6 +44,8 @@ print(f"Survival Probability: {survival_probability:.2%}")
 # > Survival Probability: 68.37%
 ```
 ## Next steps
-To learn more about using layer, checkout the [official docs](https://docs.app.layer.ai/docs/). 
-
-You can also join our [community on Slack](https://join.slack.com/t/layer-community/shared_invite/zt-o3cneq4y-5lGSZH~9NhOmBWQB4WAsJw) to learn and engage with other MLOps enthusiasts. 
+To learn more about using layer, you can: 
+- Join our [Slack Community ](https://bit.ly/layercommunityslack)
+- Visit [Layer Examples Repo](https://github.com/layerai/examples) for more examples
+- Browse [Trending Layer Projects](https://layer.ai) on our mainpage
+- Check out [Layer Documentation](https://docs.app.layer.ai) to learn more
