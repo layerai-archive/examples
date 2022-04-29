@@ -19,12 +19,12 @@ my_model = layer.get_model('layer/ecommerce_olist_order_review_score_prediction/
 df = layer.get_dataset('layer/ecommerce_olist_order_review_score_prediction/datasets/training_data:1.2').to_pandas()
 
 test_sample = df.drop(['review_score', 'order_id'], axis=1).sample()
-predicted_review_score = layer.get_model("review_score_predictor_model").get_train().predict(test_sample)
+predicted_review_score = my_model.predict(test_sample)
 print("PREDICTED REVIEW SCORE [1-5]: ",predicted_review_score)
-
-# PREDICTED REVIEW SCORE [1-5]: [4.356268]
-
 ```
+PREDICTED REVIEW SCORE [1-5]: [4.356268]
+
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DU7GUaKJkSLDMTHus5b8nfBxG0rooPn2?usp=sharing) 
 
 ## Datasets
 
