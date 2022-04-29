@@ -84,3 +84,6 @@ We will be training a XGBRegressor from xgboost. We will fit the training datase
 
 * **review_score_predictor_model:**
 https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/models/review_score_predictor_model
+
+#### Acknowledgements
+Thanks to Olist for releasing this dataset.
