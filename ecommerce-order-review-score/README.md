@@ -1,4 +1,4 @@
-# Getting started with Layer
+# E-commerce Order Review Score Prediction
 
 [![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/layerai/examples/blob/ecommerce/ecommerce-order-review-score/olist_ecommerce_notebook.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/blob/ecommerce/ecommerce-order-review-score)
 
