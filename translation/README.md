@@ -1,10 +1,12 @@
 # Fine Tuning T5 for English to SQL Translation
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/t5-fine-tuning-with-layer) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/translation/T5_Fine_tuning_with_Layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/translation)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/t5-fine-tuning-with-layer) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/translation/T5_Fine_tuning_with_Layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/translation) [![Open Hugging Face Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-blueviolet)](https://huggingface.co/spaces/mecevit/english-to-sql) 
+
+In this project, we are going to fine tune [T5 by Google](https://github.com/google-research/text-to-text-transfer-transformer) with our custom data so that it can convert basic natural language questions to SQL queries.
 
 ## How to use
 
-Make sure you have the latest version of Layer-SDK
+You can load and use the fine tuned model from this project easily. First make sure you have the latest version of Layer-SDK
 ```
 !pip install layer-sdk -q
 ```
@@ -25,7 +27,7 @@ tokenizer.decode(outputs[0],skip_special_tokens=True)
 # > SELECT avg(price) , provinces FROM wines WHERE location = 'Italy' GROUP BY provinces
 ```
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Q6wiwdyjPGbfABpsNwOBzhhWE5pQTdrC?usp=sharing) [![Open Hugging Face Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-blueviolet)](https://huggingface.co/spaces/mecevit/english-to-sql) 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Q6wiwdyjPGbfABpsNwOBzhhWE5pQTdrC?usp=sharing) 
 
 ## Dataset
 
