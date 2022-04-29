@@ -14,8 +14,6 @@ Sample application code:
 import gradio as gr
 import layer
 
-query = "Show me the average price of wines in Italy by provinces"
-
 model = layer.get_model('layer/t5-fine-tuning-with-layer/models/t5-english-to-sql').get_train()
 tokenizer = layer.get_model('layer/t5-fine-tuning-with-layer/models/t5-tokenizer').get_train()
 
