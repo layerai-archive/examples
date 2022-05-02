@@ -34,7 +34,7 @@ We have created total of 9 Layer datasets in this project. Here is the list of t
 
 From the *olist_orders_dataset.csv* file, we have created 3 datasets:
 
-*  **orders_raw_table:** This is basically identical the csv file. It just Layer Dataset definition of the same orders raw data.
+*  **orders_raw_table:** This is basically identical to the csv file. It just Layer Dataset definition of the same orders raw data.
 
 https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/orders_raw_table
 
@@ -48,7 +48,7 @@ https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/dataset
 
 
 From the *olist_order_items_dataset.csv* file, we have created 3 datasets:
-* **items_raw_table:** This is basically identical the csv file. It just Layer Dataset definition of the same items raw data.
+* **items_raw_table:** This is basically identical to the csv file. It just Layer Dataset definition of the same items raw data.
  
 https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/items_raw_table
 
@@ -63,7 +63,7 @@ https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/dataset
 
 From the *olist_order_reviews_dataset.csv* file, we have created 2 datasets
 
-* **reviews_raw_table:** This is basically identical the csv file. It just Layer Dataset definition of the same reviews raw data.
+* **reviews_raw_table:** This is basically identical to the csv file. It just Layer Dataset definition of the same reviews raw data.
 
 https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/reviews_raw_table
 
