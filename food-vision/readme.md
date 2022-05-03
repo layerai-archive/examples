@@ -5,11 +5,11 @@
 In this project, we train a model to predict the type of food from food images.
 
 ## How to use
-Make sure you have the latest version of Layer-SDK
+Make sure you have the latest version of Layer:
 
 
 ```
-pip install layer-sdk 
+pip install layer
 ```
 Then, you can fetch the model and predict on new food images.
 

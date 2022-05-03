@@ -4,7 +4,7 @@
 ## How to deploy
 Ensure that you have the latest version of Layer and Streamlit installed.
 ```
-pip install layer-sdk streamlit
+pip install layer streamlit
 ```
 
 Sample application code: 

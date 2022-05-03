@@ -3,10 +3,10 @@
 
 In this project, we'll look at how to save a model to Layer. Layer supports popular machine learning libraries and frameworks. 
 ## How to use
-Make sure you have the latest version of Layer-SDK
+Make sure you have the latest version of Layer:
 
 ```
-!pip install layer-sdk -q 
+!pip install layer -q 
 ```
 You can fetch the trained model and start making predictions from it right away.
 

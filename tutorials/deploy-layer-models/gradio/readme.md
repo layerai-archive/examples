@@ -4,7 +4,7 @@
 ## How to deploy
 Ensure that you have the latest version of Layer and Gradio installed.
 ```
-pip install layer-sdk gradio
+pip install layer gradio
 ```
 
 Sample application code: 

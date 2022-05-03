@@ -6,9 +6,9 @@ In this quick walkthrough, we will train a machine learning model to predict the
 
 ## How to use
 
-Make sure you have the latest version of Layer-SDK
+Make sure you have the latest version of Layer:
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 
 ```python
