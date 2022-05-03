@@ -5,9 +5,9 @@ This repository contains example projects that you can use to get started with [
 Layer is a collaborative MLOps platform where you can build, train, version and share your machine learning (ML) models.
 
 ## Install Layer
-The first step is to install the [Layer SDK](https://docs.app.layer.ai/docs/installation):
+The first step is to install [Layer](https://docs.app.layer.ai/docs/installation):
 ```yaml
-pip install layer-sdk
+pip install layer
 ```
 ## Clone the examples repository
 The first step is to clone this repository:

@@ -5,9 +5,9 @@
 In this project we look at how to train a CNN from scratch using the cats and dogs dataset.
 ## How to use
 
-Make sure you have the latest version of Layer-SDK
+Make sure you have the latest version of Layer:
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 
 You can fetch the trained model and start making predictions from it right away. 

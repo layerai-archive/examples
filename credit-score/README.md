@@ -5,9 +5,9 @@
 In this project we use Layer to build a credit scoring model. The project uses the [Home Credit Default Risk dataset](https://www.kaggle.com/c/home-credit-default-risk/overview) that is hosted on Kaggle.
 ## How to use
 
-Make sure you have the latest version of Layer-SDK
+Make sure you have the latest version of Layer:
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 You can fetch the trained model and start making predictions from it right away. 
 

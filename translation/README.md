@@ -6,9 +6,9 @@ In this project, we are going to fine tune [T5 by Google](https://github.com/goo
 
 ## How to use
 
-You can load and use the fine tuned model from this project easily. First make sure you have the latest version of Layer-SDK
+You can load and use the fine tuned model from this project easily. First make sure you have the latest version of Layer:
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 
 Then, you can fetch the finetuned model and the tokenizer from Layer and start translating

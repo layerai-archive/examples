@@ -3,10 +3,10 @@
 [![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/recognizing-digits) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/recognizing-digits/recognizing-digits.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/recognizing-digits)
 
 ### How to use 
-Ensure that you are using the latest version of Layer.
+Ensure that you are using the latest version of Layer:
 
 ```
-!pip install --upgrade layer-sdk 
+!pip install --upgrade layer
 ```
 You can fetch the trained model and start making predictions from it right away.
 
