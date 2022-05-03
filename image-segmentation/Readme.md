@@ -9,7 +9,7 @@ This project has been created out of the [Image Segmentation tutorial](https://w
 
 Make sure you have the latest version of Layer-SDK
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 
 Then, you can fetch the model to easily start image segmentation

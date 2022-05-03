@@ -7,7 +7,7 @@ In this project we train sentiment analysis model using Recurrent Neural Network
 
 Make sure you have the latest version of Layer-SDK
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 
 You can fetch the trained model and start making predictions from it right away. 

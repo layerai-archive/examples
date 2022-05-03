@@ -6,7 +6,7 @@ In this project, we'll look at how to save a model to Layer. Layer supports popu
 Make sure you have the latest version of Layer-SDK
 
 ```
-!pip install layer-sdk -q 
+!pip install layer -q 
 ```
 You can fetch the trained model and start making predictions from it right away.
 

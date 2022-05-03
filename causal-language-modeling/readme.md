@@ -7,7 +7,7 @@ In this project we fine tune a Hugging Face model for text generation on the wik
 #### How to use
 Make sure you have the latest version of Layer-SDK
 
-``` !pip install layer-sdk -q ``` 
+``` pip install layer -q ``` 
 
 Then, you can fetch the fine tuned model and the tokenizer from Layer and start generating text
 

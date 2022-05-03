@@ -8,7 +8,7 @@ In this quick walkthrough, we will train a machine learning model to predict the
 
 Make sure you have the latest version of Layer-SDK
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 
 ```python

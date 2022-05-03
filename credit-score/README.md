@@ -7,7 +7,7 @@ In this project we use Layer to build a credit scoring model. The project uses t
 
 Make sure you have the latest version of Layer-SDK
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 You can fetch the trained model and start making predictions from it right away. 
 

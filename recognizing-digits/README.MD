@@ -6,7 +6,7 @@
 Ensure that you are using the latest version of Layer.
 
 ```
-!pip install --upgrade layer-sdk 
+!pip install --upgrade layer 
 ```
 You can fetch the trained model and start making predictions from it right away.
 

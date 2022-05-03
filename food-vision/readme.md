@@ -9,7 +9,7 @@ Make sure you have the latest version of Layer-SDK
 
 
 ```
-pip install layer-sdk 
+pip install layer
 ```
 Then, you can fetch the model and predict on new food images.
 

@@ -7,7 +7,7 @@ In this project we look at how to train a CNN from scratch using the cats and do
 
 Make sure you have the latest version of Layer-SDK
 ```
-!pip install layer-sdk -q
+!pip install layer -q
 ```
 
 You can fetch the trained model and start making predictions from it right away. 

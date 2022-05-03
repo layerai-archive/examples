@@ -18,7 +18,7 @@ The file contains all the variables. Specifically, it contains median house valu
 
 Ensure you have the latest versio of the Layer SDK: 
 ```
-pip install layer_sdk --upgrade
+pip install layer --upgrade
 ```
 
 Fetch the data as follows: 
