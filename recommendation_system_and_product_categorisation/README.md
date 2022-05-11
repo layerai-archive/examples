@@ -26,13 +26,13 @@ import layer
 def get_5_recommendations(product_name):
   # import random 
   from random import sample
-  df = layer.get_dataset("final_product_clusters").to_pandas()
+  df = layer.get_dataset("layer/Recommendation_System_and_Product_Categorisation_Project/datasets/final_product_clusters").to_pandas()
 
   # Randomly select sample with 5 product ids
-  five_recommendations = sample(df[df["Product_ID"]==product_name]["Cluster_Member_List"].tolist()[0].tolist(),5)
+  five_recommendations = sample(df[df["Product_ID"]==product_name]['Cluster_Member_List'].iloc[0].tolist(), 5)
   # Exclude the given product 
   while product_name in five_recommendations:
-    five_recommendations = sample(df[df["Product_ID"]==product_name]["Cluster_Member_List"].tolist()[0].tolist(),5)
+    five_recommendations = sample(df[df["Product_ID"]==product_name]['Cluster_Member_List'].iloc[0].tolist(), 5)
 
   return five_recommendations  
 
