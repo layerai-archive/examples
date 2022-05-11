@@ -15,6 +15,8 @@ https://towardsdatascience.com/ad2vec-similar-listings-recommender-for-marketpla
 
 ## How to use
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Q4gCY44bSiwgMjkTyop6KTTJNtj-FxhT?usp=sharing) 
+
 Make sure you have the latest version of Layer:
 ```
 !pip install layer -q
@@ -42,8 +44,6 @@ get_5_recommendations("A13")
 Result will look like: 
 
 ['B19', 'A10', 'C51', 'A6', 'C44']
-
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Q4gCY44bSiwgMjkTyop6KTTJNtj-FxhT?usp=sharing) 
 
 ## Datasets
 
