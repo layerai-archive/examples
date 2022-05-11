@@ -47,62 +47,33 @@ Result will look like:
 
 ## Datasets
 
-We will use the famous [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) to train our model. We will only use 3 of those datasets: *olist_orders_dataset.csv* & *olist_order_items_dataset.csv* & *olist_order_reviews_dataset.csv*. Please check descriptions of these datasets from its Kaggle link above.
+We have created total of 4 Layer datasets in this project. Here is the list of those datasets and their little descriptions.
 
-We have created total of 9 Layer datasets in this project. Here is the list of those datasets and their little descriptions.
+*  **raw_session_based_clickstream_data:** This is basically identical to the source csv file which is a public Kaggle dataset: https://www.kaggle.com/datasets/tunguz/clickstream-data-for-online-shopping
 
-From the *olist_orders_dataset.csv* file, we have created 3 datasets:
+    It is just Layer Dataset definition of the same clickstream raw data.
 
-*  **orders_raw_table:** This is basically identical to the csv file. It just Layer Dataset definition of the same orders raw data.
+https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/datasets/raw_session_based_clickstream_data
 
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/orders_raw_table
+* **sequential_products:** This is a Layer dataset derived from the previous dataset which consists of sequences of products viewed in order per session. 
 
-* **orders_clean_table:** This is the clean version of the orders data after applying some data transformation operations on the orders_raw_table. 
+https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/datasets/sequential_products
 
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/orders_clean_table
+* **product_ids_and_vectors:** This is a Layer dataset which stores product vectors (embeddings) returned from Word2Vec algorithm.
 
-* **orders_based_features:** High level features extracted from the orders_clean_table.
+https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/datasets/product_ids_and_vectors
 
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/orders_based_features
-
-
-From the *olist_order_items_dataset.csv* file, we have created 3 datasets:
-* **items_raw_table:** This is basically identical to the csv file. It just Layer Dataset definition of the same items raw data.
+* **final_product_clusters:** This is a Layer dataset which stores assigned cluster numbers per product and other members of those clusters.
  
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/items_raw_table
-
-* **items_clean_table:** This is the clean version of the items data after applying some data transformation operations on the items_raw_table. 
-
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/items_clean_table
-
-* **items_based_features:** High level features extracted from the items_clean_table.
-
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/items_based_features
-
-
-From the *olist_order_reviews_dataset.csv* file, we have created 2 datasets
-
-* **reviews_raw_table:** This is basically identical to the csv file. It just Layer Dataset definition of the same reviews raw data.
-
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/reviews_raw_table
-
-* **reviews_clean_table:** This dataset is created to extract target variable for the problem which is the review scores for the past orders. 
-
-
-Finally, we created the training_data which merges the orders_based_features, items_based_features and reviews_clean_table. This dataset is used to train the model.
-
-* **training_data:**  
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/datasets/training_data
-
-
+https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/datasets/final_product_clusters
 
 
 ## Model
 
-We will be training a XGBRegressor from xgboost. We will fit the training dataset we have created. You can find all the model experiments and logged data here:
+We will be training a K-Means model from sklearn. We will fit our clustering model using product vectors that we have created previously. You can find all the model experiments and logged data here:
 
-* **review_score_predictor_model:**
-https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/models/review_score_predictor_model
+* **clustering_model:**
+https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/models/clustering_model
 
 #### Acknowledgements
-Thanks to [Olist](https://olist.com/pt-br/) for releasing this dataset.
+Thanks to [ÅapczyÅ„ski M., BiaÅ‚owÄ…s S. (2013) Discovering Patterns of Users' Behaviour in an E-shop - Comparison of Consumer Buying Behaviours in Poland and Other European Countries, â€œStudia Ekonomiczneâ€, nr 151, â€œLa sociÃ©tÃ© de l'information : perspective europÃ©enne et globale : les usages et les risques d'Internet pour les citoyens et les consommateursâ€, p. 144-153](https://olist.com/pt-br/) for releasing this dataset.
