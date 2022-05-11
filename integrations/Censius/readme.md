@@ -154,7 +154,7 @@ survival_prob,survival_pred
 ## Install Censius Client
 Let's now install the Censius Client and see how we can use it to register the model and data. 
 ```
-!pip install --trusted-host censius-logs-prod.us-east-1.elasticbeanstalk.com --index-url http://censius-logs-prod.us-east-1.elasticbeanstalk.com:8080/simple/ censius
+!pip install censius 
 ```
 
 
