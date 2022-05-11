@@ -6,7 +6,7 @@ In this e-commerce example walkthrough, we will develop and build a Recommendati
 
 ## Methodology in a Nutshell
 
-![Methodology](https://raw.githubusercontent.com/layerai/examples/recommendation_engine_and_product_categorisation/recommendation_system_and_product_categorisation/methodology_plot.png)
+![Methodology](https://github.com/layerai/examples/raw/main/recommendation-system/methodology_plot.png)
 
 
 For more information about this approach, we recommend you to read this comprehensive article: 
