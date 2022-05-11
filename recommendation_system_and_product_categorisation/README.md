@@ -6,7 +6,7 @@ In this e-commerce example walkthrough, we will develop and build a Recommendati
 
 ## Methodology in a Nutshell
 
-<img src="https://github.com/layerai/examples/blob/recommendation_engine_and_product_categorisation/recommendation_system_and_product_categorisation/methodology.png" height="600" width="800" >
+<img src="https://github.com/layerai/examples/blob/recommendation_engine_and_product_categorisation/recommendation_system_and_product_categorisation/methodology.png" height="400" width="800" >
 
 For more information about this approach, we recommend you to read this comprehensive article: 
 https://towardsdatascience.com/ad2vec-similar-listings-recommender-for-marketplaces-d98f7b6e8f03
