@@ -1,12 +1,12 @@
-# E-commerce Order Review Score Prediction
+# E-commerce Recommendation Systems & Product Categorisation
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/ecommerce-order-review-score/ecommerce-order-review-score/ecommerce_order_review_score_prediction.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/blob/ecommerce/ecommerce-order-review-score)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/recommendation_engine_and_product_categorisation/recommendation_system_and_product_categorisation/Recommendation_System_%26_Product_Categorisation.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/recommendation_engine_and_product_categorisation/recommendation_system_and_product_categorisation)
 
 In this e-commerce example walkthrough, we will develop and build a Recommendation System on  Layer. We will use a public clickstream dataset for this example project. For more information about the dataset, you could check out its Kaggle page here: https://www.kaggle.com/datasets/tunguz/clickstream-data-for-online-shopping
 
 ## Methodology in a Nutshell
 
-![alt text](https://github.com/layerai/examples/tree/recommendation_engine_and_product_categorisation/recommendation_system_and_product_categorisation/methodology.png)
+<img src="https://github.com/layerai/examples/blob/recommendation_engine_and_product_categorisation/recommendation_system_and_product_categorisation/methodology.png" height="60" width="60" >
 
 For more information about this approach, we recommend you to read this comprehensive article: 
 https://towardsdatascience.com/ad2vec-similar-listings-recommender-for-marketplaces-d98f7b6e8f03
@@ -22,15 +22,25 @@ Make sure you have the latest version of Layer:
 ```python
 import layer
 
-my_model = layer.get_model('layer/ecommerce_olist_order_review_score_prediction/models/review_score_predictor_model:2.1').get_train()
+def get_5_recommendations(product_name):
+  # import random 
+  from random import sample
+  df = layer.get_dataset("final_product_clusters").to_pandas()
 
-df = layer.get_dataset('layer/ecommerce_olist_order_review_score_prediction/datasets/training_data:1.2').to_pandas()
+  # Randomly select sample with 5 product ids
+  five_recommendations = sample(df[df["Product_ID"]==product_name]["Cluster_Member_List"].tolist()[0].tolist(),5)
+  # Exclude the given product 
+  while product_name in five_recommendations:
+    five_recommendations = sample(df[df["Product_ID"]==product_name]["Cluster_Member_List"].tolist()[0].tolist(),5)
 
-test_sample = df.drop(['review_score', 'order_id'], axis=1).sample()
-predicted_review_score = my_model.predict(test_sample)
-print("PREDICTED REVIEW SCORE [1-5]: ",predicted_review_score)
+  return five_recommendations  
+
+  
+get_5_recommendations("A13")
 ```
-PREDICTED REVIEW SCORE [1-5]: [4.356268]
+Result will look like: 
+
+['B19', 'A10', 'C51', 'A6', 'C44']
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DU7GUaKJkSLDMTHus5b8nfBxG0rooPn2?usp=sharing) 
 
