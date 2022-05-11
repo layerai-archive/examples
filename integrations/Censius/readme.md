@@ -377,6 +377,10 @@ This tab has two tools:
 ### Traffic Comparison
 
 ![title](https://drive.google.com/uc?export=view&id=1cO2p9Asn5Qzx7xoAoLn2EzoH6dDR3gPd)
+
+### Performance Comparison
+
+![title](https://drive.google.com/uc?export=view&id=1wHeSVuxTMIfGt5eXHll3CbaMquHxUCxu)
 ## Dashboards
 
 Dashboards allows you to investigate the violations further and analyze the root cause through various visualization and analysis tools including tables, line graphs, histograms, numeric functions such as count, and much more
