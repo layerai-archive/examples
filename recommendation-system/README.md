@@ -1,12 +1,12 @@
 # E-commerce Recommendation Systems & Product Categorisation
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/layerai/examples/blob/main/recommendation-system/Recommendation_System_and_Product_Categorisation.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/recommendation-system)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/recommendation-system/Recommendation_System_and_Product_Categorisation.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/recommendation-system)
 
 In this e-commerce example walkthrough, we will develop and build a Recommendation System on  Layer. We will use a public clickstream dataset for this example project. For more information about the dataset, you could check out its Kaggle page here: https://www.kaggle.com/datasets/tunguz/clickstream-data-for-online-shopping
 
 ## Methodology in a Nutshell
 
-![Methodology](https://raw.githubusercontent.com/layerai/examples/recommendation_engine_and_product_categorisation/recommendation_system_and_product_categorisation/methodology_plot.png)
+![Methodology](https://github.com/layerai/examples/raw/main/recommendation-system/methodology_plot.png)
 
 
 For more information about this approach, we recommend you to read this comprehensive article: 
