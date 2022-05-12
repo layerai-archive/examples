@@ -25,25 +25,36 @@ Make sure you have the latest version of Layer:
 ```python
 import layer
 
-def get_5_recommendations(product_name):
-  # import random 
-  from random import sample
-  df = layer.get_dataset("layer/Recommendation_System_and_Product_Categorisation_Project/datasets/final_product_clusters").to_pandas()
+# Fetch the K-Means model from Layer
+kmeans_model = layer.get_model("layer/Recommendation_System_and_Product_Categorisation_Project/models/clustering_model").get_train()
 
-  # Randomly select sample with 5 product ids
-  five_recommendations = sample(df[df["Product_ID"]==product_name]['Cluster_Member_List'].iloc[0].tolist(), 5)
-  # Exclude the given product 
-  while product_name in five_recommendations:
-    five_recommendations = sample(df[df["Product_ID"]==product_name]['Cluster_Member_List'].iloc[0].tolist(), 5)
+# Fetch product vectors (embeddings) dataset from Layer
+product_ids_and_vectors = layer.get_dataset("layer/Recommendation_System_and_Product_Categorisation_Project/datasets/product_ids_and_vectors").to_pandas()
 
-  return five_recommendations  
+# Product ID to generate recommendations for - You could try different product IDs in the data such as A16, C17, P12 etc.
+product_id = "A13"
 
+# Get Vector (Embedding) array of the given product
+vector_array = np.array(product_ids_and_vectors[product_ids_and_vectors["Product_ID"]==product_id]["Vectors"].tolist())
+
+# Get cluster number for the given product assigned by the model
+cluster_no = model.predict(vector_array)[0]
+
+# Fetch final clusters members list dataset from Layer
+final_product_clusters = layer.get_dataset("layer/Recommendation_System_and_Product_Categorisation_Project/datasets/final_product_clusters").to_pandas()
+
+# Get members list of the cluster that the given product is assigned to 
+cluster_members_list = final_product_clusters[final_product_clusters['Cluster_No']==cluster_no]['Cluster_Member_List'].iloc[0].tolist()
+
+# Randomly select 5 product recommendations from the cluster members excluding the given product
+from random import sample
+cluster_members_list.remove(product_id)
+five_product_recommendations = sample(cluster_members_list, 5)
+
+print("5 Similar Product Recommendations for {}: ".format(product_id),five_product_recommendations)
   
-get_5_recommendations("A13")
 ```
-Result will look like: 
-
-['B19', 'A10', 'C51', 'A6', 'C44']
+5 Similar Product Recommendations for A13:  ['C17', 'P60', 'C44', 'P56', 'A6']
 
 ## Datasets
 
