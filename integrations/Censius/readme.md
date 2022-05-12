@@ -154,7 +154,7 @@ survival_prob,survival_pred
 ## Install Censius Client
 Let's now install the Censius Client and see how we can use it to register the model and data. 
 ```
-!pip install censius 
+!pip install Censius 
 ```
 
 
