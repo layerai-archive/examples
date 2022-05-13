@@ -15,7 +15,7 @@ https://towardsdatascience.com/ad2vec-similar-listings-recommender-for-marketpla
 
 ## How to use
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Q4gCY44bSiwgMjkTyop6KTTJNtj-FxhT?usp=sharing) 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/recommendation-system/How_to_use.ipynb) 
 
 Make sure you have the latest version of Layer:
 ```
@@ -24,6 +24,7 @@ Make sure you have the latest version of Layer:
 
 ```python
 import layer
+import numpy as np
 
 # Fetch the K-Means model from Layer
 kmeans_model = layer.get_model("layer/Recommendation_System_and_Product_Categorisation_Project/models/clustering_model").get_train()
@@ -38,7 +39,7 @@ product_id = "A13"
 vector_array = np.array(product_ids_and_vectors[product_ids_and_vectors["Product_ID"]==product_id]["Vectors"].tolist())
 
 # Get cluster number for the given product assigned by the model
-cluster_no = model.predict(vector_array)[0]
+cluster_no = kmeans_model.predict(vector_array)[0]
 
 # Fetch final clusters members list dataset from Layer
 final_product_clusters = layer.get_dataset("layer/Recommendation_System_and_Product_Categorisation_Project/datasets/final_product_clusters").to_pandas()
