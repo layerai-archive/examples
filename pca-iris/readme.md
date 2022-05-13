@@ -1,6 +1,6 @@
 # Principal Component Analysis using the Iris Dataset
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/pca_iris) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/pca_iris.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/pca_iris)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/douglas_mcilwraith/iris-pca/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/pca-iris/iris-pca.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/pca_iris)
 
 We use the iris dataset to perform Principal Component Analysis. 
 
