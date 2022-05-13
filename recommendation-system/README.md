@@ -1,4 +1,4 @@
-# E-commerce Recommendation Systems & Product Categorisation
+Recommendation Systems
 
 [![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/recommendation-system/Recommendation_System_and_Product_Categorisation.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/recommendation-system)
 
