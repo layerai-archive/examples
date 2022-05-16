@@ -127,9 +127,6 @@ def build():
     task['answer']['classifications']
   
   return pd.DataFrame(data,columns=["image", "sex", "age","hair_color","beard_color","mustache_color","eye_color","glasses"])
-
-df = build()
-df.head(1)
 ```
 ### Label encode the gender column
 We'll build a model to predict the gender of a person. So let's encode that column. You can do the same for the other 
@@ -165,7 +162,6 @@ to indicate that we want to train the model on layer GPUs.
 @fabric("f-gpu-small")
 @model("face-classification")
 def train():
-  import tensorflow as tf
   from tensorflow import keras
   from tensorflow.keras import Sequential
   from tensorflow.keras.layers import Dense,Conv2D,MaxPooling2D,Flatten,Dropout
@@ -175,6 +171,19 @@ def train():
   from PIL import Image
   import numpy as np
   import pandas as pd
+  from sklearn.preprocessing import LabelEncoder
+  from sklearn.model_selection import train_test_split
+
+  df = build()
+  gender = df[['image','sex']]
+  labelencoder = LabelEncoder()
+  gender = gender.assign(sex = labelencoder.fit_transform(gender["sex"]))
+  X = gender[['image']]
+  y = gender[['sex']]
+  X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.20, random_state=42)
+  X_train = np.stack(X_train['image'].map(load_process_images))
+  X_test = np.stack(X_test['image'].map(load_process_images))
+
   for image in range(4):
     PIL_image = Image.fromarray(np.uint8(X_test[image])).convert('RGB')
     layer.log({f"Sample face-{image}": PIL_image})
@@ -214,8 +223,8 @@ def train():
   metrics_df[["loss","val_loss"]].plot()
   layer.log({"Loss plot": plt.gcf()})
   training_loss, training_accuracy = model.evaluate(training_data)
-  layer.log({"Training loss": loss})
-  layer.log({"Training accuracy": accuracy})
+  layer.log({"Training loss": training_loss})
+  layer.log({"Training accuracy": training_accuracy})
   metrics_df[["categorical_accuracy","val_categorical_accuracy"]].plot()
   layer.log({"Accuracy plot": plt.gcf()})
   return model
