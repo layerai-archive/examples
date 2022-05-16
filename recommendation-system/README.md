@@ -1,6 +1,6 @@
 # E-Commerce Recommendation System
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/Recommendation_System_and_Product_Categorisation_Project/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/recommendation-system/Ecommerce_Recommendation_System.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/recommendation-system)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/Ecommerce_Recommendation_System/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/recommendation-system/Ecommerce_Recommendation_System.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/recommendation-system)
 
 In this e-commerce example walkthrough, we will develop and build a Recommendation System on  Layer. We will use a public clickstream dataset for this example project. For more information about the dataset, you could check out its Kaggle page here: https://www.kaggle.com/datasets/tunguz/clickstream-data-for-online-shopping
 
