@@ -1,7 +1,7 @@
 # How to integrate Layer and Ango
 In this tutorial, we'll look at how to integrate [Layer](layer.ai) and [Ango](http://ango.ai/) in your machine learning projects. 
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/titanic_censius_integ) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/integrations/Ango/ango.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/integrations/Ango)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/ango-face-classification) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/integrations/Ango/ango.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/integrations/Ango)
 
 The integration can be done in the following steps. 
 ## Install layer
