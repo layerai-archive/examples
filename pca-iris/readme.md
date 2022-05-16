@@ -2,7 +2,7 @@
 
 [![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/douglas_mcilwraith/iris-pca/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/pca-iris/iris-pca.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/pca_iris)
 
-We use the iris dataset to perform Principal Component Analysis (PCA). PCA is performed and the first two components are used to plot the iris data in two dimensions (down from the original four). We make use of 'layer.log()'' to plot the resultant graph under the associated resources for this model.
+We use the iris dataset to perform Principal Component Analysis (PCA). PCA is performed and the first two components are used to plot the iris data in two dimensions (down from the original four). We make use of `layer.log()` to plot the resultant graph under the associated resources for this model.
 
 ## How To Use
 
@@ -45,3 +45,4 @@ Source: [Wikipedia](https://en.wikipedia.org/wiki/Principal_component_analysis)
 
 - Fisher,R.A. "The use of multiple measurements in taxonomic problems" Annual Eugenics, 7, Part II, 179-188 (1936); also in "Contributions to Mathematical Statistics" (John Wiley, NY, 1950). https://doi.org/10.1111/j.1469-1809.1936.tb02137.x
 -  Pearson, K. (1901). "On Lines and Planes of Closest Fit to Systems of Points in Space". Philosophical Magazine. 2 (11): 559–572. https://doi.org/10.1080/14786440109462720
+- Douglas McIlwraith, Haralambos Marmanis, and Dmitry Babenko. 2016. Algorithms of the Intelligent Web (2nd. ed.). Manning Publications Co., USA.
