@@ -1,6 +1,6 @@
 # E-commerce Order Review Score Prediction
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/ecommerce-order-review-score/ecommerce_order_review_score_prediction.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/blob/ecommerce/ecommerce-order-review-score)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/ecommerce_olist_order_review_score_prediction/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/ecommerce-order-review-score/ecommerce_order_review_score_prediction.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/ecommerce-order-review-score)
 
 In this e-commerce example walkthrough, we will train a machine learning model to predict review scores of orders [a number between 1 and 5] based on some order and its items based features extracted from Brazilian e-commerce company OLIST's datasets. --> https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 
@@ -14,9 +14,9 @@ Make sure you have the latest version of Layer:
 ```python
 import layer
 
-my_model = layer.get_model('layer/ecommerce_olist_order_review_score_prediction/models/review_score_predictor_model:2.1').get_train()
+my_model = layer.get_model('layer/ecommerce_olist_order_review_score_prediction/models/review_score_predictor_model').get_train()
 
-df = layer.get_dataset('layer/ecommerce_olist_order_review_score_prediction/datasets/training_data:1.2').to_pandas()
+df = layer.get_dataset('layer/ecommerce_olist_order_review_score_prediction/datasets/training_data').to_pandas()
 
 test_sample = df.drop(['review_score', 'order_id'], axis=1).sample()
 predicted_review_score = my_model.predict(test_sample)
@@ -24,7 +24,7 @@ print("PREDICTED REVIEW SCORE [1-5]: ",predicted_review_score)
 ```
 PREDICTED REVIEW SCORE [1-5]: [4.356268]
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1DU7GUaKJkSLDMTHus5b8nfBxG0rooPn2?usp=sharing) 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/ecommerce-order-review-score/how_to_notebook.ipynb) 
 
 ## Datasets
 
