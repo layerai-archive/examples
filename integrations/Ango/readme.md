@@ -127,9 +127,6 @@ def build():
     task['answer']['classifications']
   
   return pd.DataFrame(data,columns=["image", "sex", "age","hair_color","beard_color","mustache_color","eye_color","glasses"])
-
-df = build()
-df.head(1)
 ```
 ### Label encode the gender column
 We'll build a model to predict the gender of a person. So let's encode that column. You can do the same for the other 
@@ -142,20 +139,11 @@ gender = gender.assign(sex = labelencoder.fit_transform(gender["sex"]))
 ```
 ### Process the image data
 ```python
-from PIL import Image
-import io
-import base64
 from tensorflow.keras.preprocessing.image import img_to_array
-
 def load_process_images(image):
-    image_decoded = base64.b64decode(image)
-    image = Image.open(io.BytesIO(image_decoded)).resize([224, 224])
-    image = img_to_array(image)
-    return image
-
-import numpy as np
-X_train = np.stack(X_train['image'].map(load_process_images))
-X_test = np.stack(X_test['image'].map(load_process_images))
+  image = image.resize((224,224))
+  image_array  = img_to_array(image)
+  return image_array
 ```
 ## Train the model on Layer 
 To train the model on Layer, we create a function decorated with 
@@ -164,27 +152,41 @@ to indicate that we want to train the model on layer GPUs.
 ```python
 @fabric("f-gpu-small")
 @model("face-classification")
+@fabric("f-gpu-small")
+@model("face-classification")
 def train():
-  import tensorflow as tf
   from tensorflow import keras
   from tensorflow.keras import Sequential
-  from tensorflow.keras.layers import Dense,Conv2D,MaxPooling2D,Flatten,Dropout
+  from tensorflow.keras.layers import Dense,Conv2D,MaxPooling2D,Flatten,Dropout,Resizing
   from tensorflow.keras.preprocessing.image import ImageDataGenerator
   from tensorflow.keras.callbacks import EarlyStopping
   import matplotlib.pyplot as plt 
-  from PIL import Image
   import numpy as np
   import pandas as pd
+  from sklearn.preprocessing import LabelEncoder
+  from sklearn.model_selection import train_test_split
+
+
+  df = build()
+  gender = df[['image','sex']]
+  labelencoder = LabelEncoder()
+  gender = gender.assign(sex = labelencoder.fit_transform(gender["sex"]))
+  X = gender[['image']]
+  y = gender[['sex']]
+  X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.20, random_state=42)
+
   for image in range(4):
-    PIL_image = Image.fromarray(np.uint8(X_test[image])).convert('RGB')
-    layer.log({f"Sample face-{image}": PIL_image})
+    layer.log({f"Sample face-{image}": X_train['image'][image]})
+  X_train = np.stack(X_train['image'].map(load_process_images))
+  X_test = np.stack(X_test['image'].map(load_process_images))
     
   train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2,zoom_range=0.2, horizontal_flip=True,width_shift_range=0.1,height_shift_range=0.1)
   train_datagen.fit(X_train)
   training_data = train_datagen.flow(X_train, y_train, batch_size=32)
+ 
   validation_gen = ImageDataGenerator(rescale=1./255)
-  image_size = (200, 200)
   testing_data = validation_gen.flow(X_test, y_test, batch_size=32)
+
   model = Sequential([
     Conv2D(filters=32,kernel_size=(3,3),  input_shape = (224, 224, 3),activation='relu'),
     MaxPooling2D(pool_size=(2,2)),
@@ -201,9 +203,10 @@ def train():
     Dense(128, activation='relu'),
     Dropout(0.25),
     Dense(3, activation='softmax')])
+
   model.compile(optimizer='adam', loss=keras.losses.SparseCategoricalCrossentropy(), metrics=[keras.metrics.CategoricalAccuracy()])
   callback = EarlyStopping(monitor='loss', patience=3)
-  epochs=2
+  epochs=3
   history = model.fit(training_data,validation_data=testing_data, epochs=epochs,callbacks=[callback])
   metrics_df = pd.DataFrame(history.history)
   layer.log({"metrics DataFrame": metrics_df})
@@ -214,8 +217,8 @@ def train():
   metrics_df[["loss","val_loss"]].plot()
   layer.log({"Loss plot": plt.gcf()})
   training_loss, training_accuracy = model.evaluate(training_data)
-  layer.log({"Training loss": loss})
-  layer.log({"Training accuracy": accuracy})
+  layer.log({"Training loss": training_loss})
+  layer.log({"Training accuracy": training_accuracy})
   metrics_df[["categorical_accuracy","val_categorical_accuracy"]].plot()
   layer.log({"Accuracy plot": plt.gcf()})
   return model
