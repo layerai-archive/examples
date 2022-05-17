@@ -245,9 +245,9 @@ test_image = np.expand_dims(test_image, axis=0)
 prediction = my_model.predict(test_image)
 scores = tf.nn.softmax(prediction[0])
 scores = scores.numpy()
-class_names = [0,1,2]
+class_names = ["Male","I am not sure","Female"]
 f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } percent confidence." 
-# > 0 with a 57.42 percent confidence.
+# > Male with a 57.42 percent confidence.
 ```
 ![Face](https://storage.googleapis.com/ango-covid-dataset/ffhq-dataset/batch2/48312.png)
 ## Next steps
