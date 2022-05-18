@@ -19,8 +19,7 @@ layer.login()
 It's time to create your first Layer Project. You can find your created project at https://app.layer.ai. 
 
 ```
-layer.init("face-classification")
-
+layer.init("ango-face-classification")
 ```
 ## Fetch data from Ango Hub
 For this illustration, we use [Ango's face classification dataset](https://ango.ai/open-dataset/). 
@@ -128,14 +127,101 @@ def build():
   
   return pd.DataFrame(data,columns=["image", "sex", "age","hair_color","beard_color","mustache_color","eye_color","glasses"])
 ```
-### Label encode the gender column
-We'll build a model to predict the gender of a person. So let's encode that column. You can do the same for the other 
-columns. 
+https://app.layer.ai/layer/ango-face-classification/models/face-classification#Sample-Data
+### Map column names
 ```python
-# creating instance of labelencoder
-from sklearn.preprocessing import LabelEncoder
-labelencoder = LabelEncoder()
-gender = gender.assign(sex = labelencoder.fit_transform(gender["sex"]))
+def map_columns(column):
+  value = ''
+  if column == "193cda8ce1e759a6707f873":
+    value = "Male"
+  if column == "944d236620a51952c5e5571":
+    value = "Female"
+  if column == "77fd6146bfcfd5bfccba368":
+    value = "I am not sure"
+  if column == "bd2668500cd030be4d6f469":
+    value = "Baby (0-2)"
+  if column == "5dc392dbe0dab34ddfe1405":
+    value = "Child (3-12)"
+  if column == "50db2c4e3380ac4ae82f911":
+    value = "Adolescent (13-19)"
+  if column == "ce831ed469ea6e878be9513":
+    value = "Young (20-27)"
+  if column == "af9c38362173fccfd7c3015":
+    value = "Adult (28-54)"
+  if column == "711701b1b06e3fba4991772":
+    value = "Advanced Age (55+)"
+  if column == "2970de9075a430cba14f279":
+    value = "I am not sure"
+  if column == "a5d5d80e66f9f205071a314":
+    value = "Black"
+  if column == "fc277c228c78e2205589549":
+    value = "Brown"
+  if column == "6f5e48233cc751dd079e080":
+    value = "Blonde"
+  if column == "6b2f1ab2649041f77bb0298":
+    value = "Red"
+  if column == "736a5a968718ae5b6444131":
+    value = "Other"
+  if column == "b68d722e43f041710e47987":
+    value = "I am not sure"
+  if column == "e4b85e70f3afdccc9db6540":
+    value = "not visible"
+  if column == "282825ed043bf653768b426":
+    value = "no hair"
+  if column == "4b17bef04561266670d8206":
+    value = "Black"
+  if column == "6919425e2396b9b40f6f485":
+    value = "Blonde"
+  if column == "0eb1daf52c68a2949007480":
+    value = "Red"
+  if column == "86f8304be238a41cec5b993":
+    value = "Other"
+  if column == "a790b7c3a553cbe07890290":
+    value = "I am not sure"
+  if column == "7c1a27a0f38cf58c49dc828":
+    value = "not visible"
+  if column == "34c35efb4914475c2ff3057":
+    value = "No beard"
+  if column == "fcd81b574198478f2db8682":
+    value = "Black"
+  if column == "b411a018af74c13ecf90737":
+    value = "Brown"
+  if column == "259478fd6b7e2e380aab571":
+    value = "Blonde"
+  if column == "080731525844bfceba0a521":
+    value = "Red"
+  if column == "59eabca3b294c4a6505a127":
+    value = "Other"
+  if column == "6954030d7b0ac951ecfb000":
+    value = "I am not sure"
+  if column == "e5d65255a498a4158f49686":
+    value = "not visible"
+  if column == "38f72fe7c936801c4f57923":
+    value = "no mustache"
+  if column == "840281fa1c0e97d6e2f5869":
+    value = "Brown"
+  if column == "d3ddbc0b880770722a61928":
+    value = "Green"
+  if column == "3f0bdc2ede23b06f3886233":
+    value = "Blue"
+  if column == "8ed3700cc18f621fd77e483":
+    value = "Other"
+  if column == "86063a0a72c77752bc5c143":
+    value = "I am not sure"
+  if column == "97f0074a4016d00ba6ad145":
+    value = "not visible"
+  if column == "c3379433f9341398c2d0186":
+    value = "prescription glasses"
+  if column == "62034dc149cb408f2fdb556":
+    value = "Sunglasses"
+  if column == "0cf7ca3372e071f963b6234":
+    value = "I am not sure"
+  if column == "5c09b9445f4a3e27b638383":
+    value = "not visible"
+  if column == "d71a761292c505e31420704":
+    value = "no glasses"
+  return value
+
 ```
 ### Process the image data
 ```python
@@ -152,8 +238,6 @@ to indicate that we want to train the model on layer GPUs.
 ```python
 @fabric("f-gpu-small")
 @model("face-classification")
-@fabric("f-gpu-small")
-@model("face-classification")
 def train():
   from tensorflow import keras
   from tensorflow.keras import Sequential
@@ -168,6 +252,14 @@ def train():
 
 
   df = build()
+  df['sex'] = df['sex'].map(map_columns)
+  df['age'] = df['age'].map(map_columns)
+  df['hair_color'] = df['hair_color'].map(map_columns)
+  df['beard_color'] = df['beard_color'].map(map_columns)
+  df['mustache_color'] = df['mustache_color'].map(map_columns)
+  df['eye_color'] = df['eye_color'].map(map_columns)
+  df['glasses'] = df['glasses'].map(map_columns)
+  layer.log({"Sample Data": df.sample(10).drop("image",axis=1)})
   gender = df[['image','sex']]
   labelencoder = LabelEncoder()
   gender = gender.assign(sex = labelencoder.fit_transform(gender["sex"]))
@@ -175,7 +267,7 @@ def train():
   y = gender[['sex']]
   X_train, X_test, y_train, y_test = train_test_split( X, y, test_size=0.20, random_state=42)
 
-  for image in range(4):
+  for image in range(5):
     layer.log({f"Sample face-{image}": X_train['image'][image]})
   X_train = np.stack(X_train['image'].map(load_process_images))
   X_test = np.stack(X_test['image'].map(load_process_images))
@@ -206,7 +298,7 @@ def train():
 
   model.compile(optimizer='adam', loss=keras.losses.SparseCategoricalCrossentropy(), metrics=[keras.metrics.CategoricalAccuracy()])
   callback = EarlyStopping(monitor='loss', patience=3)
-  epochs=3
+  epochs=2
   history = model.fit(training_data,validation_data=testing_data, epochs=epochs,callbacks=[callback])
   metrics_df = pd.DataFrame(history.history)
   layer.log({"metrics DataFrame": metrics_df})
@@ -245,7 +337,7 @@ test_image = np.expand_dims(test_image, axis=0)
 prediction = my_model.predict(test_image)
 scores = tf.nn.softmax(prediction[0])
 scores = scores.numpy()
-class_names = ["Male","I am not sure","Female"]
+class_names = ['Female', 'I am not sure', 'Male']
 f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } percent confidence." 
 # > Male with a 57.42 percent confidence.
 ```
