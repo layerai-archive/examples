@@ -342,6 +342,7 @@ f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } pe
 # > Male with a 57.42 percent confidence.
 ```
 ![Face](https://storage.googleapis.com/ango-covid-dataset/ffhq-dataset/batch2/48312.png)
+
 ## Next steps
 To learn more about using layer, you can: 
 - Join our [Slack Community ](https://bit.ly/layercommunityslack)
