@@ -57,6 +57,6 @@ We use the SQuAD dataset to fine tune a [DistilBert](https://huggingface.co/docs
 
 The models saved as a result of this work can be seen below: 
 
-https://development.layer.co/layer/qas/models/qa
+https://app.layer.co/layer/qas/models/qa
 
-https://development.layer.co/layer/qas/models/dsbt-tokenizer
+https://app.layer.co/layer/qas/models/dsbt-tokenizer
