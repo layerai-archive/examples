@@ -34,5 +34,5 @@ We fine tune a pre-trained [BERT uncased model](https://huggingface.co/bert-base
 english. BERT has been pre-trained on a large corpus of English data and can also be used for 
 Masked Language Modeling and Next sentence Prediction. 
 
-https://development.layer.co/layer/derrick-bert/models/bert-tokenizer  
-https://development.layer.co/layer/derrick-bert/models/bert  
+https://app.layer.ai/layer/derrick-bert/models/bert-tokenizer  
+https://app.layer.ai/layer/derrick-bert/models/bert  
