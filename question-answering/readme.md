@@ -1,5 +1,5 @@
 ### Question answering with SQUAD dataset and Transformers
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://development.layer.co/layer/qas/models/qa)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/qas/models/qa)
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1h8M_sLKAbvsAA11qgSPsOc98g08RB4_u/view?usp=sharing)
 [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples)
 
@@ -57,6 +57,6 @@ We use the SQuAD dataset to fine tune a [DistilBert](https://huggingface.co/docs
 
 The models saved as a result of this work can be seen below: 
 
-https://app.layer.co/layer/qas/models/qa
+https://app.layer.ai/layer/qas/models/qa
 
-https://app.layer.co/layer/qas/models/dsbt-tokenizer
+https://app.layer.ai/layer/qas/models/dsbt-tokenizer
