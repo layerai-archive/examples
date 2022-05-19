@@ -14,8 +14,8 @@ Then, you can fetch the fine tuned model and the tokenizer from Layer and start 
 
 ```python
 import layer
-bert = layer.get_model('bert').get_train()
-tokenizer = layer.get_model('bert-tokenizer').get_train()
+bert = layer.get_model('layer/derrick-bert/models/bert').get_train()
+tokenizer = layer.get_model('layer/derrick-bert/models/bert-tokenizer').get_train()
 input_sequence = "I really loved that movie, the script was on point"
 # encode context the generation is conditioned on
 input_ids = tokenizer.encode(input_sequence, return_tensors='tf')
