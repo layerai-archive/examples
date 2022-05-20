@@ -11,31 +11,37 @@ Segments AI is a platform for computer vision experts to manage, label and impro
 
 ## How to make predictions
 
-You can load and use the trained model from this project easily. 
-First make sure you have the latest version of Layer and Pytorch:
+You can load and use the trained model from this project easily. First make sure you have the required libraries.
+
 ```
-!pip install layer -q
-!pip install torch
+!pip install layer torch torchvision Pillow -q
 ```
 
 Then, you can fetch the model from Layer and make predictions from an image
 
 ```python
-import layer
+import requests
 import torch
+from torchvision import transforms as T
+from PIL import Image
 
-
+import layer
 my_model = layer.get_model("layer/instance-segmentation/models/object_detector:4.2").get_train()
+
+img_url = "https://segmentsai-prod.s3.eu-west-2.amazonaws.com/assets/admin-tobias/515b671a-4ce3-4199-91e4-ad53f155935e.jpg"
+original_image = Image.open(requests.get(img_url, stream=True).raw)
+trans = T.ToTensor()
+img = trans(original_image)
+
 my_model.eval()
-
-img = ... # Your tensor image
-
 with torch.no_grad():
     prediction = my_model([img])
 
+Image.fromarray(prediction[0]['masks'][0, 0].mul(255).byte().cpu().numpy())
 ```
 
 Here is a sample prediction logged during the training of this model:
+
 https://app.layer.ai/layer/instance-segmentation/models/object_detector#prediction
 
 ## How to train an instance segmentation model
@@ -90,7 +96,7 @@ Here is a comparison of the parameters in our best performing models:
 https://app.layer.ai/layer/instance-segmentation/models/object_detector?v=4.2&w=5.3&w=4.1#parameters
 
 After some iterations, we have identified that model is doing really a good job on segmenting cars and people but not with the other classes
-like flat road, side walk, construction. We experimented with more parameters, especially `epochs` and `learning rate`. See our `mAP` scores getting better and better every experimentations.
+like flat road, sidewalk, construction objects. We experimented with more parameters, especially `epochs` and `learning rate`. See our `mAP` scores getting better and better every experimentation.
 
 https://app.layer.ai/layer/instance-segmentation/models/object_detector?v=2.1&w=3.1&w=4.1&w=4.2#mAP-bbox
 

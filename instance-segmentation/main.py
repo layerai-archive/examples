@@ -325,6 +325,4 @@ if __name__ == "__main__":
         layer.login()
 
     layer.init(project_name="instance-segmentation", pip_requirements_file="requirements.txt")
-    # layer.run([train])
-
-    # train()
+    layer.run([train])
