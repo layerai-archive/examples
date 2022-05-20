@@ -1,4 +1,5 @@
 # 🚀 Getting started with Superwise.ai and Layer.ai on AWS Sagemaker
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/superwise) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/integrations/Superwise/superwise.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/integrations/Superwise)
 
 In this notebook, we will demonstrate how to integrate a Sagemaker based development workflow with Superwise.ai and Layer.ai. 
 
@@ -395,6 +396,7 @@ sm_boto3.delete_endpoint(EndpointName=predictor.endpoint)
 ## Where to go from here
 To learn more about using layer, you can: 
 - Join our [Slack Community ](https://bit.ly/layercommunityslack)
+- Checkout [Superwise documentation](https://docs.superwise.ai/)
 - Visit [Layer Examples Repo](https://github.com/layerai/examples) for more examples
 - Browse [Trending Layer Projects](https://layer.ai) on our main page
 - Check out [Layer Documentation](https://docs.app.layer.ai) to learn more
