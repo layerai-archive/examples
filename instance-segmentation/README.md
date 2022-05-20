@@ -1,6 +1,6 @@
 # COCO Instance Segmentation
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/instance-segmentation/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/instance-segmentation/demo.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/instance-segmentation)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/instance-segmentation/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/instance-segmentation/notebooks/demo.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/instance-segmentation)
 
 ![Segments AI](https://segments.ai/blog/assets/images/panoptic-datasets/2d.png)
 
