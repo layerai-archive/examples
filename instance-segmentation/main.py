@@ -295,7 +295,7 @@ opt = None
 def parse_options():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--layer_api_key', type=str, required=True)
+    parser.add_argument('--layer_api_key', type=str)
     parser.add_argument('--segments_api_key', type=str, required=True)
     parser.add_argument('--dataset', type=str, default="segments/sidewalk-imagery")
     parser.add_argument('--dataset_version', type=str, default="v1.0")
