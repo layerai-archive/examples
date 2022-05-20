@@ -14,6 +14,7 @@ from PIL import Image
 import json
 from pycocotools import mask as pctmask
 from os import path
+import argparse
 
 
 class CocoInstanceDataset(torch.utils.data.Dataset):
@@ -117,7 +118,7 @@ def fetch_dataset(name, version, api_key):
     release = client.get_release(name, version)
     dataset = SegmentsDataset(release, labelset='ground-truth', filter_by=['labeled', 'reviewed'])
 
-    export_dataset(dataset, export_format='coco-instance')
+    return export_dataset(dataset, export_format='coco-instance')
 
 
 def get_instance_segmentation_model(num_classes):
@@ -154,7 +155,7 @@ def get_transform(is_train):
     return transforms.Compose(train_transforms)
 
 
-def get_datasets(img_root, coco_json,class_ids):
+def get_datasets(img_root, coco_json, class_ids):
     import torch
     # use our dataset and defined transformations
 
@@ -170,16 +171,16 @@ def get_datasets(img_root, coco_json,class_ids):
     # split the dataset in train and test set
     torch.manual_seed(1)
     indices = torch.randperm(len(dataset)).tolist()
-    dataset = torch.utils.data.Subset(dataset, indices[:50])
-    dataset_test = torch.utils.data.Subset(dataset_test, indices[-50:])
+    dataset = torch.utils.data.Subset(dataset, indices[:opt.train_dataset_limit])
+    dataset_test = torch.utils.data.Subset(dataset_test, indices[-opt.test_dataset_limit:])
 
     # define training and validation data loaders
     data_loader = torch.utils.data.DataLoader(
-        dataset, batch_size=2, shuffle=True, num_workers=0,
+        dataset, batch_size=opt.train_batch_size, shuffle=True, num_workers=0,
         collate_fn=utils.collate_fn)
 
     data_loader_test = torch.utils.data.DataLoader(
-        dataset_test, batch_size=1, shuffle=False, num_workers=0,
+        dataset_test, batch_size=opt.test_batch_size, shuffle=False, num_workers=0,
         collate_fn=utils.collate_fn)
 
     return data_loader, data_loader_test
@@ -192,7 +193,7 @@ def pred2image(img_as_tensor, prediction):
     img = Image.fromarray(img_as_tensor.mul(255).permute(1, 2, 0).byte().numpy())
     index = 0
     for score in prediction[0]['scores'].cpu().numpy():
-        if score > 0.9:
+        if score > 0.7:
             marr = prediction[0]['masks'][index, 0].mul(255).byte().cpu().numpy()
             marr = np.dstack((marr, marr, marr))
             alpha = np.sum(marr, axis=-1) > (90 * 3)
@@ -208,29 +209,36 @@ def pred2image(img_as_tensor, prediction):
     return img
 
 
-@model("object_detector")
-@fabric("f-gpu-small")
-# @resources("./export_coco-instance_segments_sidewalk-imagery_v1.0.json", "./images")
-def train():
-    import torch
+def log_options():
     import pandas as pd
-
-    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-
-    df = pd.DataFrame({"name": parameters.keys(), "value": parameters.values()})
+    dict = opt.__dict__.copy()
+    [dict.pop(k, None) for k in ["layer_api_key", "segments_api_key"]]
+    df = pd.DataFrame({"name": dict.keys(), "value": dict.values()})
     df = df.set_index("name")
     layer.log({"parameters": df})
 
+
+@model("object_detector")
+@fabric("f-gpu-small")
+def train():
+    import torch
+
+    device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+
+    log_options()
+
     # load datasets
-    fetch_dataset("segments/sidewalk-imagery", "v1.0", "009580f5a7c686d6e9c8948b64f599c4df67ba2a")
-    img_root = './segments/segments_sidewalk-imagery/v1.0'
-    coco_json = './export_coco-instance_segments_sidewalk-imagery_v1.0.json'
+    coco_json, img_root = fetch_dataset(opt.dataset, opt.dataset_version, opt.segments_api_key)
 
     # test datasets
     # img_root = './images'
     # coco_json = './export_coco-instance_segments_sidewalk-imagery_v1.0.json'
 
-    class_ids = [1, 10]
+    if opt.class_ids is None:
+        class_ids = list(range(1, 35))
+    else:
+        class_ids = list(map(int, opt.class_ids.split(',')))
+
     data_loader, data_loader_test = get_datasets(img_root, coco_json, class_ids)
 
     layer.log({"train size": len(data_loader.dataset),
@@ -238,21 +246,24 @@ def train():
                })
 
     num_classes = 35
-    model = get_instance_segmentation_model(num_classes)
+    if opt.fine_tune:
+        model = layer.get_model(opt.fine_tune).get_train()
+    else:
+        model = get_instance_segmentation_model(num_classes)
     # move model to the right device
     model.to(device)
 
     # construct an optimizer
     params = [p for p in model.parameters() if p.requires_grad]
-    optimizer = torch.optim.SGD(params, lr=parameters["lr"], momentum=parameters["momentum"],
-                                weight_decay=parameters["weight_decay"])
+    optimizer = torch.optim.SGD(params, lr=opt.lr, momentum=opt.momentum,
+                                weight_decay=opt.weight_decay)
 
     # and a learning rate scheduler which decreases the learning rate by
     # 10x every 3 epochs
-    lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=parameters["step_size"],
-                                                   gamma=parameters["gamma"])
+    lr_scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=opt.step_size,
+                                                   gamma=opt.gamma)
 
-    num_epochs = parameters["epochs"]
+    num_epochs = opt.epochs
     for epoch in range(num_epochs):
         # train for one epoch, printing every 10 iterations
         engine.train_one_epoch(model, optimizer, data_loader, device, epoch, print_freq=10)
@@ -263,7 +274,7 @@ def train():
     engine.evaluate(model, data_loader_test, device=device)
 
     # log sample prediction
-    img, target = data_loader_test.dataset[4]
+    img, target = data_loader_test.dataset[20]
     model.eval()
     with torch.no_grad():
         prediction = model([img.to(device)])
@@ -278,17 +289,42 @@ cloudpickle.register_pickle_by_value(engine)
 cloudpickle.register_pickle_by_value(coco_eval)
 cloudpickle.register_pickle_by_value(coco_utils)
 
-parameters = {
-    "lr": 0.001,
-    "momentum": 0.9,
-    "weight_decay": 0.0005,
-    "step_size": 2,
-    "gamma": 0.1,
-    "epochs": 1,
-}
+opt = None
 
-layer.login_with_api_key("sik-9wh9y42Mc8ZdZFq6Ggtc6r9DK9DPD9QMyDtHzAeTH")
-layer.init(project_name="instance-segmentation", pip_requirements_file="requirements.txt")
-layer.run([train], debug=True)
 
-# train()
+def parse_options():
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument('--layer_api_key', type=str, required=True)
+    parser.add_argument('--segments_api_key', type=str, required=True)
+    parser.add_argument('--dataset', type=str, default="segments/sidewalk-imagery")
+    parser.add_argument('--dataset_version', type=str, default="v1.0")
+    parser.add_argument('--fine-tune', type=str, default=None)
+
+    parser.add_argument('--lr', type=float, default=0.001)
+    parser.add_argument('--momentum', type=float, default=0.9)
+    parser.add_argument('--weight_decay', type=float, default=0.01)
+    parser.add_argument('--step_size', type=int, default=2)
+    parser.add_argument('--gamma', type=float, default=0.1)
+    parser.add_argument('--epochs', type=int, default=5)
+    parser.add_argument('--train_batch_size', type=int, default=2)
+    parser.add_argument('--test_batch_size', type=int, default=1)
+    parser.add_argument('--train_dataset_limit', type=int, default=800)
+    parser.add_argument('--test_dataset_limit', type=int, default=50)
+    parser.add_argument('--class_ids', type=str, default=None)
+
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    opt = parse_options()
+
+    if opt.layer_api_key:
+        layer.login_with_api_key(opt.layer_api_key)
+    else:
+        layer.login()
+
+    layer.init(project_name="instance-segmentation", pip_requirements_file="requirements.txt")
+    # layer.run([train])
+
+    # train()
