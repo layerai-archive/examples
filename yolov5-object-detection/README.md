@@ -41,10 +41,11 @@ python main.py --help
 
 Once you train you model, you can load and use the **YoloV5** model easily. 
 
-First make sure you have the required libraries.
+First make sure you have the required libraries. Don't forget to restart your runtime after the installation!
 
 ```
-!pip install layer -q
+!pip install -U layer -q
+!pip install -U ipython -q
 !git clone https://github.com/ultralytics/yolov5
 !pip install -r yolov5/requirements.txt
 ```
@@ -62,7 +63,7 @@ results = my_model(img)
 
 results.print()
 
-# image 1/1: 1728x2304 1 engine
+# image 1/1: 1728x2304 3 engine
 ```
 
 Here is a sample prediction logged during the training of this model:
