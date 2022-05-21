@@ -6,13 +6,15 @@
 
 In this tutorial, we are going to train an **YOLOv5 Object Detection** model with a dataset from [Roboflow Universe](https://universe.roboflow.com/). 
 
-Roboflow Universe hosts free public computer vision datasets in many popular formats (including CreateML JSON, COCO JSON, Pascal VOC XML, YOLO v3, and Tensorflow TFRecords). For this example 
+Roboflow Universe hosts free public computer vision datasets in many popular formats (including CreateML JSON, COCO JSON, Pascal VOC XML, YOLO v3, and Tensorflow TFRecords). For this example we have used [RailsCars Image Dataset](https://universe.roboflow.com/new-workspace-w5mg3/railcarsv2_3) by convert it into a `YOLO` format. 
 
 ## How to train a Yolov5 Object Detection model
 
-With Layer, you can start training your **YoloV5 Object Detection** model with a [Roboflow Universe](https://universe.roboflow.com/) dataset easily.
+You can start training your **YoloV5 Object Detection** model with a [Roboflow Universe](https://universe.roboflow.com/)
+dataset easily with using this tutorial. Layer takes care of fetching the Roboflow Universe dataset, training the YoloV5 object detection
+model with the parameters you provided and saves it under your Layer account automatically.
 
-First make sure you have the latest Layer SDK:
+To start, make sure you have the latest Layer SDK:
 ```shell
 pip install layer -U
 ```
@@ -20,10 +22,11 @@ pip install layer -U
 Then clone the [Layer Examples](https://github.com/layerai/examples) which contains this project
 ```shell
 git clone https://github.com/layerai/examples
-cd layerai/examples/yolov5-objection-detection
+cd examples/yolov5-objection-detection
 ```
 
-And in your terminal just run the following command, that's all! Easy right!
+And in your terminal just run the following command. Don’t forget to replace the Roboflow options with your own values.
+
 ```shell
 python main.py --api_key=[YOUR_ROBOFLOW_API_KEY] --workspace=[ROBOFLOW_WORKSPACE] --project=[ROBOFLOW_PROJECT]
 ```
