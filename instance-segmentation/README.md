@@ -48,18 +48,19 @@ https://app.layer.ai/layer/instance-segmentation/models/object_detector#predicti
 
 You can start training your labeled image dataset on Segments AI directly on Layer asily from your terminal. You don't need a GPU on your local. Layer will train the model on Layer infra and register it to your Layer account.
 
-First clone our [examples repo](https://github.com/layerai/examples):
+First make sure you have the latest Layer SDK:
+```shell
+pip install layer -U
+```
+
+Then clone [Layer Examples](https://github.com/layerai/examples) repo:
 ```shell
 git clone https://github.com/layerai/examples
-```
-
-Then install the required libraries:
-```shell
 cd layerai/examples/instance-segmentation
-pip install -r requirements.txt
 ```
 
-And now, in your terminal just run the following command:
+And now, in your terminal just run the following command. Don't forget to replace your options with your own
+`[YOUR_SEGMENTS_API_KEY]` and `[YOUR_SEGMENTS_DATASET]`
 ```shell
 python main.py --segments_api_key=[YOUR_SEGMENTS_API_KEY] --dataset=[YOUR_SEGMENTS_DATASET]
 ```
