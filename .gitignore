@@ -1,3 +1,4 @@
 .ipynb_checkpoints
-recommendation_system/.DS_Store
-.DS_Store
+**/.DS_Store
+**/__pycache__/
+**/.idea/
