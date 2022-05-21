@@ -167,4 +167,4 @@ if __name__ == "__main__":
         layer.login()
 
     layer.init(project_name="yolov5-object-detection", pip_requirements_file="requirements.txt")
-    # layer.run([train], debug=True)
+    layer.run([train], debug=True)
