@@ -1,0 +1,4 @@
+cython==0.29.30
+pycocotools==2.0.4
+torchvision
+segments-ai==0.70
