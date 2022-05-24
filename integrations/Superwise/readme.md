@@ -284,7 +284,7 @@ sw.version.activate(my_version.id)
 
 ```
 ### ✅  Verifying the setup
-![Verifying the setup](https://github.com/layerai/examples/raw/main/integrations/Supwerwise/images/image1.png)
+![Verifying the setup](https://github.com/layerai/examples/raw/main/integrations/Superwise/images/image1.png)
 ## 🩺 Part III - monitoring ongoing predictions
 
 Now that we have a *Version* of the model setup with a *Baseline*, we can start sending ongoing model predictions to Superwise to monitor the model's performance in a production settings.
@@ -384,7 +384,7 @@ transaction_id.get_properties()['status']
 
 
 ### ✅ Verifying the setup
-![verify_the_setup](https://github.com/layerai/examples/raw/main/integrations/Supwerwise/images/image2.png)
+![verify_the_setup](https://github.com/layerai/examples/raw/main/integrations/Superwise/images/image2.png)
 
 🗑️ Don't forget to delete the endpoint !
 
