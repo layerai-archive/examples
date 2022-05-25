@@ -3,3 +3,4 @@ torch==1.10.0+cu113
 torchvision==0.11.1+cu113
 roboflow==0.2.4
 Pillow
+requests==2.27.1

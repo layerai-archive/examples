@@ -1,6 +1,5 @@
 import argparse
 
-
 import layer
 from layer.decorators import model, fabric
 
@@ -24,7 +23,7 @@ def download_roboflow_dataset():
     from roboflow import Roboflow
     rf = Roboflow(api_key=opt.api_key)
     project = rf.workspace(opt.workspace).project(opt.project)
-    dataset = project.version(1).download("yolov5")
+    dataset = project.version(opt.version).download("yolov5")
 
     data_file = dataset.location + "/data.yaml"
 
@@ -63,10 +62,19 @@ def log_options():
     layer.log({"parameters": df})
 
 
-def on_pretrain_routine_end():
+def on_train_start():
     from pathlib import Path
     layer.log({"labels": Path("./yolov5/runs/train/exp/labels.jpg")})
     layer.log({"labels_correlogram": Path("./yolov5/runs/train/exp/labels_correlogram.jpg")})
+
+def on_train_end():
+    from pathlib import Path
+    layer.log({
+        "train_batch0": Path("./yolov5/runs/train/exp/train_batch0.jpg"),
+        "train_batch1": Path("./yolov5/runs/train/exp/train_batch1.jpg"),
+        "train_batch2": Path("./yolov5/runs/train/exp/train_batch2.jpg"),
+         })
+
 
 
 def on_fit_epoch_end(vals, epoch, best_fitness, fi):
@@ -92,7 +100,7 @@ def train():
 
     # Init callback
     callbacks = yolov5_Callbacks()
-    callbacks.register_action("on_pretrain_routine_end", callback=on_pretrain_routine_end)
+    callbacks.register_action("on_train_start", callback=on_train_start)
     callbacks.register_action("on_fit_epoch_end", callback=on_fit_epoch_end)
 
     # Parse options
@@ -118,7 +126,7 @@ def train():
     # Log a prediction with an image from the test set
     from pathlib import Path
     from PIL import Image
-    img_path = list(Path(data_location+"/test/images").rglob("*.jpg"))[opt.test_image_index]
+    img_path = list(Path(data_location + "/test/images").rglob("*.jpg"))[opt.test_image_index]
     img = Image.open(img_path)
     results = model(img)
     results.save(save_dir=".")
@@ -138,6 +146,8 @@ opt = None
 def parse_options():
     parser = argparse.ArgumentParser()
 
+    YOLOV5_ROOT = "./yolov5"
+
     # Layer specific options
     parser.add_argument('--layer_api_key', type=str)
 
@@ -145,15 +155,15 @@ def parse_options():
     parser.add_argument('--api_key', type=str, required=True)
     parser.add_argument('--workspace', type=str, required=True)
     parser.add_argument('--project', type=str, required=True)
-    parser.add_argument('--test_image_index', type=int, default=20)
+    parser.add_argument('--version', type=int, default=1)
+    parser.add_argument('--test_image_index', type=int, default=0)
 
     # YoloV5 specific options
     parser.add_argument('--weights', type=str, default="yolov5s.pt")
     parser.add_argument('--epochs', type=int, default=5)
-    parser.add_argument('--img_size', type=int, default=320)
+    parser.add_argument('--img_size', type=int, default=640)
     parser.add_argument('--batch', type=int, default=16)
-    parser.add_argument('--workers', type=int, default=8)
-
+    parser.add_argument('--workers', type=int, default=0)
 
     return parser.parse_args()
 
@@ -166,5 +176,5 @@ if __name__ == "__main__":
     else:
         layer.login()
 
-    layer.init(project_name="yolov5-object-detection", pip_requirements_file="requirements.txt")
+    layer.init(project_name="mecevit-yolov5-object-detection", pip_requirements_file="requirements.txt")
     layer.run([train], debug=True)
