@@ -38,10 +38,12 @@ We provide two `@model` code blocks within the example. The first, entitled `ber
 
 ## Dataset
 
-The dataset used in this project is hosted by Huggingface as simply [`imdb`](https://huggingface.co/datasets/imdb). The original dataset is provided by [Stanford University](https://ai.stanford.edu/~amaas/data/sentiment/) and is managed by [Andrew Maas](https://ai.stanford.edu/~amaas/). The following is an exerpt:
+The dataset used in this project is hosted by Huggingface as simply [`imdb`](https://huggingface.co/datasets/imdb). The original dataset is provided by [Stanford University](https://ai.stanford.edu/~amaas/data/sentiment/) and is managed by [Andrew Maas](https://ai.stanford.edu/~amaas/). We provide an excerpt as follows, however more detail can be found on the Layer dataset home pages for [train](https://app.layer.ai/douglas_mcilwraith/distilbert-imdb/datasets/imdb-train) and [test](https://app.layer.ai/douglas_mcilwraith/distilbert-imdb/datasets/imdb-test)
 
 |text|label|
 |---|---|
+|I rented I AM CURIOUS-YELLOW from my video store because... | 0 |
+|"I Am Curious: Yellow" is a risible and pretentious steaming pile...| 0 |
 
 Source: [Dataset Home Page](https://ai.stanford.edu/~amaas/data/sentiment/)
 
