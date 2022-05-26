@@ -17,7 +17,7 @@ First make sure you have the latest version of Layer:
 !pip install layer -q
 ```
 
-Datasets can be uploaded to layer as follows. For this project, we use the the 50% split of train/test data to create two Layer datasets. `imdb-train` and `imdb-test`. The following code illustrates the process for one of these datasets.
+Datasets can be uploaded to layer as follows. For this project, we use the 50% split of train/test data to create two Layer datasets. `imdb-train` and `imdb-test`. The following code illustrates the process for one of these datasets.
 
 ```python
 @dataset("imdb-train")
@@ -33,15 +33,17 @@ def build():
 layer.run([build])
 ```
 
+We provide two `@model` code blocks within the example. The first, entitled `bert-fine-tune` takes the pretrained model as above and fine tunes this model for the binary classification task on a random 10% sample of the training set `imdb-train`. The second code block is designated as `distilbert-evaluation` and evaluates the model that results from fine-tuning against the test set `imdb-test`. This is performed by taking 5 folds from the test data and collecting metrics against the binary classification task. These Metrics are logged to Layer under the [model home page](https://app.layer.ai/douglas_mcilwraith/distilbert-imdb/models/distilbert-evaluation#results). 
 
 
 ## Dataset
 
-The [Iris flower data set](https://doi.org/10.1111/j.1469-1809.1936.tb02137.x) or Fisher's Iris data set is a multivariate data set introduced by the British statistician and biologist Ronald Fisher in his 1936 paper "The use of multiple measurements in taxonomic problems" as an example of linear discriminant analysis. It is sometimes called Anderson's Iris data set because Edgar Anderson collected the data to quantify the morphologic variation of Iris flowers of three related species. Two of the three species were collected in the Gaspé Peninsula "all from the same pasture, and picked on the same day and measured at the same time by the same person with the same apparatus".
+The dataset used in this project is hosted by Huggingface as simply [`imdb`](https://huggingface.co/datasets/imdb). The original dataset is provided by [Stanford University](https://ai.stanford.edu/~amaas/data/sentiment/) and is managed by [Andrew Maas](https://ai.stanford.edu/~amaas/). The following is an exerpt:
 
-The data set consists of 50 samples from each of three species of Iris (Iris setosa, Iris virginica and Iris versicolor). Four features were measured from each sample: the length and the width of the sepals and petals, in centimeters. Based on the combination of these four features, Fisher developed a linear discriminant model to distinguish the species from each other.
+|text|label|
+|---|---|
 
-Source: [Wikipedia](https://en.wikipedia.org/wiki/Iris_flower_data_set)
+Source: [Dataset Home Page](https://ai.stanford.edu/~amaas/data/sentiment/)
 
 ## Model
 
