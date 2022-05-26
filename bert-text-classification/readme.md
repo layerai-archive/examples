@@ -49,11 +49,14 @@ Source: [Dataset Home Page](https://ai.stanford.edu/~amaas/data/sentiment/)
 
 ## Model
 
-[PCA](https://doi.org/10.1080/14786440109462720) was invented in 1901 by Karl Pearson, as an analogue of the principal axis theorem in mechanics; it was later independently developed and named by Harold Hotelling in the 1930s is used in exploratory data analysis and for making predictive models. 
+As DistilBERT is a derivative of BERT, we will first discuss the overall archtitecture of BERT, before discussing how DistilBERT achieves a 40% reduction in model size.
 
-It is commonly used for dimensionality reduction by projecting each data point onto only the first few principal components to obtain lower-dimensional data while preserving as much of the data's variation as possible. The first principal component can equivalently be defined as a direction that maximizes the variance of the projected data. The `i-th` principal component can be taken as a direction orthogonal to the first `i-1`principal components that maximizes the variance of the projected data.
+BERT is a multi layer, bidirectional Transformer encoder, based upon the implementation described my [Vaswani et al.](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html). The following figure shows the overall architecture for BERT, and alludes to how BERT can be used for both next sentence prediction as well as a language model.
 
-Source: [Wikipedia](https://en.wikipedia.org/wiki/Principal_component_analysis)
+![bert_architecture.png](Bert Architecture)
+
+Source: [Bert Paper](https://arxiv.org/abs/1810.04805)
+Source: [DistilBERT Paper](https://arxiv.org/abs/1910.01108)
 
 ### References
 
