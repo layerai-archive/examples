@@ -55,6 +55,8 @@ BERT is a multi layer, bidirectional Transformer encoder, based upon the impleme
 
 ![Bert Architecture](bert_architecture.png)
 
+As you will see, the input representation toward the bottom of the image, is able to represent both single sentences and multiple sentences, such as question answer pairs. BERT provides a learned representation which is trained by minimising the error of two types of tasks. The first is known as 'Next Sentence Prediction' or NSP, the second 'Masked Language Model. The aim of the first such tasks is to provide the next sequence of words, given the first sequence. The aim of the second is to 'infill' words that have been masked out. By minimsing the error across these tasks, an embedding is learned which is able to capture the context of a particular word. Such embeddings can then be fined tuned for particular language tasks. This proceeds by updating the pre trained model weights to create a new embedding tailored to the tasks at hand.
+
 Source: [Bert Paper](https://arxiv.org/abs/1810.04805)
 Source: [DistilBERT Paper](https://arxiv.org/abs/1910.01108)
 
