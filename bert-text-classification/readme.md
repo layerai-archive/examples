@@ -53,7 +53,7 @@ As DistilBERT is a derivative of BERT, we will first discuss the overall archtit
 
 BERT is a multi layer, bidirectional Transformer encoder, based upon the implementation described my [Vaswani et al.](https://papers.nips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html). The following figure shows the overall architecture for BERT, and alludes to how BERT can be used for both next sentence prediction as well as a language model.
 
-![bert_architecture.png](Bert Architecture)
+![Bert Architecture](bert_architecture.png)
 
 Source: [Bert Paper](https://arxiv.org/abs/1810.04805)
 Source: [DistilBERT Paper](https://arxiv.org/abs/1910.01108)
