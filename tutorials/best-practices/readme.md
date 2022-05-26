@@ -55,16 +55,12 @@ In some cases, you will define large models or need to use large pre-trained mod
 @model(name="model_name")
 def train():
     from tensorflow.keras.preprocessing.image import ImageDataGenerator
-    import tensorflow as tf
-    from tensorflow import keras
     from tensorflow.keras import Sequential
     from tensorflow.keras.layers import Dense,Conv2D,MaxPooling2D,Flatten,Dropout
     from tensorflow.keras.preprocessing.image import ImageDataGenerator
     from tensorflow.keras.callbacks import EarlyStopping
     import os
     import matplotlib.pyplot as plt 
-    from PIL import Image
-    import numpy as np
     import pandas as pd
     import tarfile
     import wget
@@ -110,6 +106,29 @@ from layer import Dataset, Model
 @dataset("final_product_clusters", dependencies=[Model("clustering_model"), Dataset("product_ids_and_vectors")])
 
 
+```
+
+
+## Pip requirements 
+[Layer fabrics](https://docs.app.layer.ai/docs/reference/fabrics) are pre-installed with common data science packages 
+to make your development work faster. Check the versions of these [packages](https://docs.app.layer.ai/docs/reference/fabrics#preinstalled-libraries) 
+to make sure that your project uses those versions. However, if the package version are different, we recommend that you declare the
+exact version to prevent any errors. This can be done using the [pip_requirements decorator](https://docs.app.layer.ai/docs/sdk-library/pip-requirements-decorator) as shown below
+
+
+
+```python
+@pip_requirements(packages=["pandas==1.3.5","Keras==2.6.0","scikit-learn==1.0.2"])
+@model(name="model_name")
+def train():
+    pass
+```
+This can be done for datasets as well:
+```python
+@pip_requirements(packages=["pandas==1.3.5","Keras==2.6.0","scikit-learn==1.0.2"])
+@dataset(name="dataset_name")
+def save_data():
+    pass
 ```
 ## Where to go from here
 To learn more about using layer, you can: 
