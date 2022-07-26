@@ -1,6 +1,6 @@
 # Image Segmentation with Layer
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/image-segmentation) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/image-segmentation/segmentation.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/image-segmentation)
+[![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/image-segmentation) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/image-segmentation/segmentation.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/image-segmentation)
 
 In this project, we are going to focus on image segmentation with a modified [U-net](https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/). 
 This project has been created out of the [Image Segmentation tutorial](https://www.tensorflow.org/tutorials/images/segmentation) of Tensorflow.
