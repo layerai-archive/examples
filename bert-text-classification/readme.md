@@ -1,6 +1,6 @@
 # Sentiment Classification of IMDB Reviews Using DistilBERT
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/douglas_mcilwraith/bert-text-classification/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/bert-text-classification/distilbert-imdb.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/bert-text-classification)
+[![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/douglas_mcilwraith/bert-text-classification/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/bert-text-classification/distilbert-imdb.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/bert-text-classification)
 
 In this example we use the [DistilBERT](https://arxiv.org/abs/1910.01108) language model, a smaller, faster a variant of the popular [BERT](https://arxiv.org/abs/1810.04805) (Bidirectional Encoder Representations from Transformers) model.
 

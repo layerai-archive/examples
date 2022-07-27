@@ -1,6 +1,6 @@
 # Fine Tuning T5 for English to SQL Translation
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/t5-fine-tuning-with-layer) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/translation/T5_Fine_tuning_with_Layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/translation) [![Open Hugging Face Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-blueviolet)](https://huggingface.co/spaces/mecevit/english-to-sql) 
+[![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/t5-fine-tuning-with-layer) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/translation/T5_Fine_tuning_with_Layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/translation) [![Open Hugging Face Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Demo-blueviolet)](https://huggingface.co/spaces/mecevit/english-to-sql) 
 
 In this project, we are going to fine tune [T5 by Google](https://github.com/google-research/text-to-text-transfer-transformer) with our custom data so that it can convert basic natural language questions to SQL queries.
 

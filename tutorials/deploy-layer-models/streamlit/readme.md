@@ -1,5 +1,5 @@
 # How to deploy Layer models using Streamlit 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/image-classification) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/food-vision/food-vision.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/food-vision)
+[![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/image-classification) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/food-vision/food-vision.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/food-vision)
 
 ## How to deploy
 Ensure that you have the latest version of Layer and Streamlit installed.

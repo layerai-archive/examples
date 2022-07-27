@@ -1,5 +1,5 @@
 # California house price prediction 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/california_housing) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/housing/housing.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/housing)
+[![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/california_housing) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/housing/housing.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/housing)
 
 We used the California housing dataset to build a regression model for predicting the price of a house. 
 

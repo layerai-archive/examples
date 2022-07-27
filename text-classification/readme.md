@@ -1,6 +1,6 @@
 ### Fine tuning Hugging Face for text classification
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/derrick-bert)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/text-classification/text-classification-fine-tuning-hf.ipynb)
+[![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/derrick-bert)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/text-classification/text_classification_fine_tuning_hf.ipynb)
 [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/text-classification)
 
 In this project we fine tune a BERT model for text classification.
