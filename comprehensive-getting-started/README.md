@@ -1,6 +1,6 @@
 # Comprehensive Getting Started with Layer
 
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/my_first_project) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1b53u98ognuhiexlXTQhuOaF1Bqjl2BJW?usp=sharing) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/comprehensive-getting-started)
+[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/my_first_project) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/comprehensive-getting-started/Layer_Comprehensive_Getting_Started.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/comprehensive-getting-started)
 
 Layer is an ML Metadata store where you log, display, compare and share all assets produced during a project development. Everything will be in a single place including project documentations so that it will enable DS teams to work collaboratively. 
 
