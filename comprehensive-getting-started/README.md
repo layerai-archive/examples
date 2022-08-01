@@ -30,8 +30,8 @@ https://app.layer.ai/burak_layer/my-first-project/datasets/predictions
 
 Check out the only model we created in this project:
 
-https://app.layer.ai/burak_layer/my-first-project/datasets/my_first_model
+https://app.layer.ai/burak_layer/my-first-project/models/my_first_model
 
 You could also provide links to some logged data such as a plot comparing two different versions of the model below:
 
-https://app.layer.ai/burak_layer/my-first-project/datasets/my_first_model?w=1.2#Feature-Importance-Plot
+https://app.layer.ai/burak_layer/my-first-project/models/my_first_model?w=1.2#Feature-Importance-Plot
