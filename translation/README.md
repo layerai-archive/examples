@@ -53,7 +53,7 @@ The [T5 library](https://github.com/google-research/text-to-text-transfer-transf
 
 We are going to be using pretrained T5 model from :hugs: and fine tune it with adding a new task: `translate English to SQL`. We have used Layer GPU fabric to train the model for 3 Epochs. Here is the loss curve:
 
-https://app.layer.ai/layer/t5-fine-tuning-with-layer/models/t5-english-to-sql#loss
+https://app.layer.ai/layer/t5-fine-tuning-with-layer/models/t5-english-to-sql?v=4.1&w=3.1&w=2.1#loss
 
 
 You can find the models below with parameters and metrics:
