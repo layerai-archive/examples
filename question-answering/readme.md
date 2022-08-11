@@ -1,6 +1,6 @@
 ### Question answering with SQUAD dataset and Transformers
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/qas/models/qa)
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1h8M_sLKAbvsAA11qgSPsOc98g08RB4_u/view?usp=sharing)
+[![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/qas/models/qa)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/question-answering/squad_question_answering.ipynb)
 [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples)
 
 In this project we fine tune a Hugging Face BERT model on the SQUAD dataset for question answering.

@@ -1,5 +1,5 @@
 # Deploy Layer models with Gradio
-[![Open in Layer](https://development.layer.co/assets/badge.svg)](https://app.layer.ai/layer/t5-fine-tuning-with-layer) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/translation/T5_Fine_tuning_with_Layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/translation)
+[![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/t5-fine-tuning-with-layer) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/translation/T5_Fine_tuning_with_Layer.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/translation)
 
 ## How to deploy
 Ensure that you have the latest version of Layer and Gradio installed.

@@ -1,4 +1,4 @@
-# COCO Instance Segmentation
+# COCO Object Detection
 
 [![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/yolov5-object-detection/) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/yolov5-object-detection/notebooks/demo.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/yolov5-object-detection)
 
