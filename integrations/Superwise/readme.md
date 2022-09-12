@@ -1,9 +1,10 @@
 # 🚀 Getting started with Superwise.ai and Layer.ai on AWS Sagemaker
+
 [![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/superwise) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/integrations/Superwise/superwise.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/integrations/Superwise)
 
-In this notebook, we will demonstrate how to integrate a Sagemaker based development workflow with Superwise.ai and Layer.ai. 
+In this notebook, we will demonstrate how to integrate a Sagemaker based development workflow with Superwise.ai and Layer.ai.
 
-Part I of this notebook walks you through fetching a pre-trained model from Layer. 
+Part I of this notebook walks you through fetching a pre-trained model from Layer.
 
 Part II of this notebook will walk you through how to setup Superwise.ai to start tracking your Layer model, by registering and providing a baseline for the model's behavior.
 
@@ -15,7 +16,7 @@ At this point, you should be able to start seeing insights from Superwise.ai in 
 
 1. Be familiar with AWS's SageMaker
 2. A Superwise.ai account that enables you to login and view insights
-3. A set of API keys for sending data to Superwise.ai 
+3. A set of API keys for sending data to Superwise.ai
 4. Permissions to create models, training jobs and inference endpoints inside Sagemaker
 5. Grant Superwise.ai permissions to your SageMaker bucket #soon to be removed
 
@@ -47,16 +48,18 @@ print("Using bucket " + bucket)
 # > Using bucket sagemaker-us-east-1-341398874395
 
 ```
+
 ## 🏗️ Part I - Fetching the housing model from Layer
 
 This is a classical LinearRegression model, that uses a publicly available dataset.
 
 This guide is based on the best practices from [AWS Sagemaker's example for building a Scikit-Learn model](https://github.com/aws/amazon-sagemaker-examples/blob/master/sagemaker-python-sdk/scikit_learn_randomforest/Sklearn_on_SageMaker_end2end.ipynb)
+
 ### 📌 Prerequisites
 
 1. Be familiar with AWS's SageMaker
 2. A Superwise.ai account that enables you to login and view insights
-3. A set of API keys for sending data to Superwise.ai 
+3. A set of API keys for sending data to Superwise.ai
 4. Permissions to create models, training jobs and inference endpoints inside Sagemaker
 5. Grant Superwise.ai permissions to your SageMaker bucket #soon to be removed
 
@@ -68,8 +71,10 @@ Note: this notebook works best when run from within a [Sagemaker's notebook](htt
 %env AWS_SECRET_ACCESS_KEY=YOUR_AWS_SECRET_ACCESS_KEY
 
 ```
-### Import pre-trained Layer model 
-We'll use a model that's already trained on Layer. To train your own model from scratch check out our [Quickstart notebook](https://github.com/layerai/examples/tree/main/titanic). 
+
+### Import pre-trained Layer model
+
+We'll use a model that's already trained on Layer. To train your own model from scratch check out our [Quickstart notebook](https://github.com/layerai/examples/tree/main/titanic).
 
 ```
 from layer.decorators import dataset, model,resources
@@ -81,7 +86,9 @@ import numpy as np
 import layer
 my_model = layer.get_model("layer/california_housing/models/housing").get_train()
 ```
+
 ### Persist the model
+
 ```
 # persist model
 import os
@@ -92,8 +99,11 @@ print("model persisted at " + path)
 # > model persisted at ./model.joblib
 
 ```
+
 ### Local inference
-Let's fetch the training data and test the model. 
+
+Let's fetch the training data and test the model.
+
 ```
 train = layer.get_dataset("layer/california_housing/datasets/train").to_pandas()
 X = train.drop(columns="median_house_value")
@@ -102,24 +112,26 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_
 ```
 
 Test the inference flow:
+
 1. load model
 2. process raw input (serialized numpy array)
-3. predict and return results 
+3. predict and return results
 
-**Note** 
+**Note**
 
-Deploying a model with SageMaker requires a script containing the following functions: 
+Deploying a model with SageMaker requires a script containing the following functions:
 
 - model function named `model_fn`
 - input function named `input_fn`
 - predictio function named `predict_fn`
 
-The function is attached on this [repo](https://github.com/layerai/examples/tree/main/integrations/Supwerwise/my_script.py). 
+The function is attached on this [repo](https://github.com/layerai/examples/tree/main/integrations/Supwerwise/my_script.py).
 
 We attach a unique ID per instance for the prediction.
 For the purpose of demonstration, we use the Dataframe index as the ID of the instances.
 
 In a production setting, you should use an ID that has semantic meaning in the context of your application, such as transaction_id etc.
+
 ```
 import my_script
 local_model = my_script.model_fn(".")
@@ -142,7 +154,9 @@ predictions = my_script.predict_fn(input_data, local_model)
 ```
 
 ### 🚀 Deploy to a real-time endpoint
-Create a Sagemaker *Model* from s3 artifacts, and deploy it to an Endpoint
+
+Create a Sagemaker _Model_ from s3 artifacts, and deploy it to an Endpoint
+
 ```
 #Build tar file with model data + inference code
 import subprocess
@@ -172,6 +186,7 @@ predictor = model.deploy(instance_type="ml.t2.medium", initial_instance_count=1)
 ```
 
 ✅ Test the Endpoint by running an Inference request
+
 ```
 import pandas as pd
 import numpy as np
@@ -197,7 +212,6 @@ predictions
 
 ## 📈 Part II - Tracking the Layer model with Superwise.ai
 
-
 ```
 import os
 os.environ["SUPERWISE_CLIENT_ID"] = 'YOUR_SUPERWISE_CLIENT_ID'
@@ -212,6 +226,7 @@ sw = Superwise()
 ```
 
 ### Create the Model entity
+
 ```
 housing_model = Model(
     name="housing-layer-and-superwise",
@@ -232,14 +247,14 @@ baseline_data = X_train.assign(
     median_house_value=y_train
 )
 
-# treat the Dataframe index as a record ID - for demonstration purpose only. 
+# treat the Dataframe index as a record ID - for demonstration purpose only.
 baseline_df = baseline_data.reset_index().rename(columns={"index": "record_id"})
 
 ```
-### Create a *Schema* object that describes the format and sematics of our Baseline data
+
+### Create a _Schema_ object that describes the format and sematics of our Baseline data
 
 The Schema object helps Superwise.ai interpret our data, for example - undertand which column prepresents predictions and which represents the labels.
-
 
 ```
 entities_collection = sw.data_entity.summarise(
@@ -253,23 +268,24 @@ entities_collection = sw.data_entity.summarise(
 )
 
 ```
+
 Here is the schema main properties (roles, types, feature importance and descriptive statistics):
+
 ```
 ls = list()
 for entity in entities_collection:
     ls.append(entity.get_properties())
-    
+
 pd.DataFrame(ls).head()
 ```
 
-### Create a *Version* object
+### Create a _Version_ object
 
-As explained above, a *Version* represents a concrete ML model we are tracking.
+As explained above, a _Version_ represents a concrete ML model we are tracking.
 
-A *Version* solves a *Model*
+A _Version_ solves a _Model_
 
-A *Version* has a *Baseline*
-
+A _Version_ has a _Baseline_
 
 ```
 housing_version = Version(
@@ -283,11 +299,14 @@ sw.version.activate(my_version.id)
 # <Response [200]>
 
 ```
-### ✅  Verifying the setup
+
+### ✅ Verifying the setup
+
 ![Verifying the setup](https://github.com/layerai/examples/raw/main/integrations/Superwise/images/image1.png)
+
 ## 🩺 Part III - monitoring ongoing predictions
 
-Now that we have a *Version* of the model setup with a *Baseline*, we can start sending ongoing model predictions to Superwise to monitor the model's performance in a production settings.
+Now that we have a _Version_ of the model setup with a _Baseline_, we can start sending ongoing model predictions to Superwise to monitor the model's performance in a production settings.
 
 For this demo, we will treat the Test split of the data as our "ongoing predictions".
 
@@ -302,7 +321,7 @@ predictions
        ...,
        [  1275.        , 154390.03384507]])
 
-# Note: we provide the column names we declared in the Schema object, 
+# Note: we provide the column names we declared in the Schema object,
 # so that Superwise.ai will be able to interpret the data
 
 ongoing_predictions = pd.DataFrame(data=predictions, columns=["record_id", "prediction"])
@@ -314,19 +333,21 @@ ongoing_data = ongoing_features.merge(ongoing_predictions, how='left', on='recor
 ongoing_data['ts'] = pd.Timestamp.now()
 
 ```
+
 ### Log the production data in Superwise
+
 ```
 def chunks(lst, n):
     """Yield successive n-sized chunks from lst."""
     for i in range(0, len(lst), n):
         yield lst[i:i + n]
-        
+
 # Log the production data in Superwise (Max chunck size = 1000 predictions)
 
 ongoing_data_chuncks = chunks(ongoing_data.to_dict(orient='records'), 1000)
 
 transaction_ids = list()
-for ongoing_data_chunck in ongoing_data_chuncks:  
+for ongoing_data_chunck in ongoing_data_chuncks:
     transaction_id = sw.transaction.log_records(
         model_id=my_model.id,
         version_id=my_version.name,
@@ -335,12 +356,15 @@ for ongoing_data_chunck in ongoing_data_chuncks:
     transaction_ids.append(transaction_id)
 
 ```
-Check the status of the logged data 
+
+Check the status of the logged data
+
 ```
 transaction_id = sw.transaction.get(transaction_id=transaction_ids[0]['transaction_id'])
 transaction_id.get_properties()['status']
 # Passed'
 ```
+
 ### Optional - report ongoing lables to Superwise.ai
 
 In some cases, our system is able to gather "ground truth" labels for it's predictions.
@@ -358,15 +382,13 @@ ground_truth['record_id'] = indexes
 ground_truth
 ```
 
-
 ### Report the labels to Superwise.ai
-
 
 ```
 ground_truth_chuncks = chunks(ground_truth.to_dict(orient='records'), 1000)
 
 transaction_ids = list()
-for ground_truth_chunck in ground_truth_chuncks:  
+for ground_truth_chunck in ground_truth_chuncks:
     transaction_id = sw.transaction.log_records(
         model_id=my_model.id,
         records=ground_truth_chunck
@@ -376,14 +398,15 @@ for ground_truth_chunck in ground_truth_chuncks:
 ```
 
 Check the status of the logged data
+
 ```
 transaction_id = sw.transaction.get(transaction_id=transaction_ids[0]['transaction_id'])
 transaction_id.get_properties()['status']
 # 'Passed'
 ```
 
-
 ### ✅ Verifying the setup
+
 ![verify_the_setup](https://github.com/layerai/examples/raw/main/integrations/Superwise/images/image2.png)
 
 🗑️ Don't forget to delete the endpoint !
@@ -392,11 +415,12 @@ transaction_id.get_properties()['status']
 sm_boto3.delete_endpoint(EndpointName=predictor.endpoint)
 ```
 
-
 ## Where to go from here
-To learn more about using layer, you can: 
+
+To learn more about using layer, you can:
+
 - Join our [Slack Community ](https://bit.ly/layercommunityslack)
 - Checkout [Superwise documentation](https://docs.superwise.ai/)
 - Visit [Layer Examples Repo](https://github.com/layerai/examples) for more examples
 - Browse [Trending Layer Projects](https://layer.ai) on our main page
-- Check out [Layer Documentation](https://docs.app.layer.ai) to learn more
+- Check out [Layer Documentation](https://docs.layer.ai) to learn more

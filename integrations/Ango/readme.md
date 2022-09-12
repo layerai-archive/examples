@@ -1,36 +1,46 @@
 # How to integrate Layer and Ango
-In this tutorial, we'll look at how to integrate [Layer](layer.ai) and [Ango](http://ango.ai/) in your machine learning projects. 
+
+In this tutorial, we'll look at how to integrate [Layer](layer.ai) and [Ango](http://ango.ai/) in your machine learning projects.
 
 [![Open in Layer](https://app.layer.ai/assets/badge.svg)](https://app.layer.ai/layer/ango-face-classification) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/layerai/examples/blob/main/integrations/Ango/ango.ipynb) [![Layer Examples Github](https://badgen.net/badge/icon/github?icon=github&label)](https://github.com/layerai/examples/tree/main/integrations/Ango)
 
-The integration can be done in the following steps. 
+The integration can be done in the following steps.
+
 ## Install layer
+
 ```
 !pip install -U layer -q
 ```
 
 ## Login into Layer
-Next, you need to authenticate your Layer account. 
+
+Next, you need to authenticate your Layer account.
+
 ```
 import layer
 layer.login()
 ```
+
 ## Initialize your first Layer project
-It's time to create your first Layer Project. You can find your created project at https://app.layer.ai. 
+
+It's time to create your first Layer Project. You can find your created project at https://app.layer.ai.
 
 ```
 layer.init("ango-face-classification")
 ```
+
 ## Fetch data from Ango Hub
-For this illustration, we use [Ango's face classification dataset](https://ango.ai/open-dataset/). 
 
-We can use the Ango SDK to fetch data from Ango Hub. You will need to go to [ango.ai](https://ango.ai/), create an account and then obtain 
-your API key and project ID. 
+For this illustration, we use [Ango's face classification dataset](https://ango.ai/open-dataset/).
 
-Let's define a fuction to fetch the data using Ango: 
+We can use the Ango SDK to fetch data from Ango Hub. You will need to go to [ango.ai](https://ango.ai/), create an account and then obtain
+your API key and project ID.
+
+Let's define a fuction to fetch the data using Ango:
+
 ```python
 from ango.sdk import SDK
-import os 
+import os
 import urllib.request
 
 class Ango:
@@ -38,10 +48,10 @@ class Ango:
         self.sdk = SDK(api_key=api_key)
         if project_id:
             self.project_id = project_id
-    
+
     def setProject(self,project_id):
         self.project_id = project_id
-    
+
     '''
     Gets annotations for assets within a project, streams page by page.
     params:
@@ -81,14 +91,16 @@ class Ango:
     def fetchExportLink(self):
       return self.sdk.export(self.project_id)['data']['exportPath']
 #Run this block after the two credentials have been added.
-#You may save the annotations in JSON, or use them programatically. 
+#You may save the annotations in JSON, or use them programatically.
 #Note: This takes some time for larger annotations.
 ango = Ango(api_key="YOUR_API_KEY",project_id="YOUR_PROJECT_ID") #Face Classification
 annotations = ango.getAnnotations(annotation_status="Completed")
 print(len(annotations))
-      
+
 ```
+
 ### Save the data as a Pandas DataFrame
+
 ```python
 import pandas as pd
 import io
@@ -124,11 +136,14 @@ def build():
     # answer = next((answer for answer in task['answer']['classifications'] if answer['schemaId'] == "7d4d70ea16e8e5d7ce8e721"), None)
     # print(answer)
     task['answer']['classifications']
-  
+
   return pd.DataFrame(data,columns=["image", "sex", "age","hair_color","beard_color","mustache_color","eye_color","glasses"])
 ```
+
 https://app.layer.ai/layer/ango-face-classification/models/face-classification#Sample-Data
+
 ### Map column names
+
 ```python
 def map_columns(column):
   value = ''
@@ -223,7 +238,9 @@ def map_columns(column):
   return value
 
 ```
+
 ### Process the image data
+
 ```python
 from tensorflow.keras.preprocessing.image import img_to_array
 def load_process_images(image):
@@ -231,10 +248,13 @@ def load_process_images(image):
   image_array  = img_to_array(image)
   return image_array
 ```
-## Train the model on Layer 
-To train the model on Layer, we create a function decorated with 
-the [@model decorator](https://docs.app.layer.ai/docs/sdk-library/model-decorator). We also use, the [@fabric decorator](https://docs.app.layer.ai/docs/reference/fabrics#predefined-fabrics) 
-to indicate that we want to train the model on layer GPUs. 
+
+## Train the model on Layer
+
+To train the model on Layer, we create a function decorated with
+the [@model decorator](https://docs.layer.ai/docs/sdk-library/model-decorator). We also use, the [@fabric decorator](https://docs.layer.ai/docs/reference/fabrics#predefined-fabrics)
+to indicate that we want to train the model on layer GPUs.
+
 ```python
 @fabric("f-gpu-small")
 @model("face-classification")
@@ -244,7 +264,7 @@ def train():
   from tensorflow.keras.layers import Dense,Conv2D,MaxPooling2D,Flatten,Dropout,Resizing
   from tensorflow.keras.preprocessing.image import ImageDataGenerator
   from tensorflow.keras.callbacks import EarlyStopping
-  import matplotlib.pyplot as plt 
+  import matplotlib.pyplot as plt
   import numpy as np
   import pandas as pd
   from sklearn.preprocessing import LabelEncoder
@@ -271,11 +291,11 @@ def train():
     layer.log({f"Sample face-{image}": X_train['image'][image]})
   X_train = np.stack(X_train['image'].map(load_process_images))
   X_test = np.stack(X_test['image'].map(load_process_images))
-    
+
   train_datagen = ImageDataGenerator(rescale=1./255, shear_range=0.2,zoom_range=0.2, horizontal_flip=True,width_shift_range=0.1,height_shift_range=0.1)
   train_datagen.fit(X_train)
   training_data = train_datagen.flow(X_train, y_train, batch_size=32)
- 
+
   validation_gen = ImageDataGenerator(rescale=1./255)
   testing_data = validation_gen.flow(X_test, y_test, batch_size=32)
 
@@ -317,11 +337,15 @@ def train():
 # Run the project on Layer Infra using remote GPUs
 layer.run([train])
 ```
+
 https://app.layer.ai/layer/ango-face-classification/models/face-classification?w=32.1&w=25.1&w=19.1&w=17.1&w=14.1&w=12.1#Sample-face-0 https://app.layer.ai/layer/ango-face-classification/models/face-classification?w=32.1&w=25.1&w=19.1&w=17.1&w=14.1&w=12.1#metrics-DataFrame https://app.layer.ai/layer/ango-face-classification/models/face-classification?w=32.1&w=25.1&w=19.1&w=17.1&w=14.1&w=12.1#Loss-plot https://app.layer.ai/layer/ango-face-classification/models/face-classification?w=32.1&w=25.1&w=19.1&w=17.1&w=14.1&w=13.1&w=12.1#
+
 ## Run predictions on the model
+
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1_Pj_AhadYI-iRyMV2D0bq5_ncgvLYPn6?usp=sharing)
 
-We now fetch the model trained on Layer and start making predictions with new faces. 
+We now fetch the model trained on Layer and start making predictions with new faces.
+
 ```python
 import numpy as np
 import tensorflow as tf
@@ -338,13 +362,17 @@ prediction = my_model.predict(test_image)
 scores = tf.nn.softmax(prediction[0])
 scores = scores.numpy()
 class_names = ['Female', 'I am not sure', 'Male']
-f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } percent confidence." 
+f"{class_names[np.argmax(scores)]} with a { (100 * np.max(scores)).round(2) } percent confidence."
 # > Male with a 57.42 percent confidence.
 ```
+
 ![Face](https://storage.googleapis.com/ango-covid-dataset/ffhq-dataset/batch2/48312.png)
+
 ## Next steps
-To learn more about using layer, you can: 
+
+To learn more about using layer, you can:
+
 - Join our [Slack Community ](https://bit.ly/layercommunityslack)
 - Visit [Layer Examples Repo](https://github.com/layerai/examples) for more examples
 - Browse [Trending Layer Projects](https://layer.ai) on our mainpage
-- Check out [Layer Documentation](https://docs.app.layer.ai) to learn more
+- Check out [Layer Documentation](https://docs.layer.ai) to learn more
